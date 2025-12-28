@@ -3,7 +3,7 @@ import { ZodError } from "zod";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/shema/zod";
 // Your own logic for dealing with plaintext password strings; be careful!
-import { saltAndHashPassword } from "@/utils/password";
+// import { saltAndHashPassword } from "@/utils/password";
 import { getUserFromDb } from "@/utils/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/utils/prisma";
