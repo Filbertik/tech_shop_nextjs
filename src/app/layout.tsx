@@ -7,7 +7,7 @@ import { Providers } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
 import { layoutConfig } from "@/config/layout.config";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth/auth";
+// import { auth } from "@/auth/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
