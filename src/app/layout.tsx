@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import {HeroUIProvider} from "@heroui/react";
 import Header from "@/components/UI/layout/header";
 import { Providers } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
 import { layoutConfig } from "@/config/layout.config";
 import { SessionProvider } from "next-auth/react";
-// import { auth } from "@/auth/auth";
+import { authOptions } from "@/auth/options"; // твій NextAuth конфіг
+import { getServerSession } from "next-auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +29,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
+  // отримуємо сесію з сервера
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body
@@ -39,7 +41,7 @@ export default async function RootLayout({
           <SessionProvider session={session}>
             <Header />
             <main
-              className={`flex flex-col w-full justify-start items-center`}
+              className="flex flex-col w-full justify-start items-center"
               style={{
                 height: `calc(100vh - ${layoutConfig.headerHeight} - ${layoutConfig.footerHeight})`,
               }}
@@ -47,7 +49,7 @@ export default async function RootLayout({
               {children}
             </main>
             <footer
-              className={`w-full flex justify-center items-center mt-auto`}
+              className="w-full flex justify-center items-center mt-auto"
               style={{ height: layoutConfig.footerHeight }}
             >
               <p>{siteConfig.description}</p>
@@ -55,9 +57,6 @@ export default async function RootLayout({
           </SessionProvider>
         </Providers>
       </body>
-      {/* <YourApplication /> */}
-      {/* <h1>Header</h1> */}
-      {/* <h1>Footer</h1> */}
     </html>
   );
 }
