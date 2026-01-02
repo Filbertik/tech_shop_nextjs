@@ -6,8 +6,10 @@ import { Providers } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
 import { layoutConfig } from "@/config/layout.config";
 import { SessionProvider } from "next-auth/react";
-import { authOptions } from "@/auth/options"; // твій NextAuth конфіг
-import { getServerSession } from "next-auth";
+
+//  імпорт getServerSession
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/auth/options"; // створи цей файл
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +28,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  // отримуємо сесію з сервера
+}: Readonly<{ children: React.ReactNode }>) {
   const session = await getServerSession(authOptions);
 
   return (
