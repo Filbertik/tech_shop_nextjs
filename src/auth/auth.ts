@@ -3,12 +3,13 @@ import { ZodError } from "zod";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/shema/zod";
 // Your own logic for dealing with plaintext password strings; be careful!
-import { saltAndHashPassword } from "@/utils/password";
+// import { saltAndHashPassword } from "@/utils/password";
 import { getUserFromDb } from "@/utils/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/utils/prisma";
 import bcryptjs from "bcryptjs";
 
+// NextAuth конфігурація
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -19,7 +20,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials) => {
+
+      // authorize повертає тип Promise<User | null>
+      authorize: async (
+        credentials
+      ): Promise<{
+        id: string;
+        email: string;
+        password: string;
+        createdAt: Date;
+        updatedAt: Date;
+      } | null> => {
         try {
           //   let user = null;
 
@@ -39,7 +50,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const user = await getUserFromDb(email);
 
           if (!user || !user.password) {
-            throw new Error("Невірне введення даних / Invalid credentials.");
+            // повертаємо null, якщо користувач не знайдений
+            return null;
+            // throw new Error("Невірне введення даних / Invalid credentials.");
           }
 
           const isPasswordValid = await bcryptjs.compare(
@@ -47,13 +60,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             user.password
           );
 
+          if (!isPasswordValid) {
+            // повертаємо null, якщо пароль не валідний
+            return null;
+          }
+
           // return JSON object with the user data
-          return user;
+          return {
+            id: user.id,
+            email: user.email,
+            password: user.password,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+          };
         } catch (error) {
           if (error instanceof ZodError) {
             // Return `null` to indicate that the credentials are invalid
             return null;
           }
+
+          // catch other errors
+          console.error(error);
+          return null;
         }
       },
     }),
@@ -61,43 +89,63 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 });
 
 // import NextAuth from "next-auth";
+// import { ZodError } from "zod";
 // import Credentials from "next-auth/providers/credentials";
+// import { signInSchema } from "@/shema/zod";
 // // Your own logic for dealing with plaintext password strings; be careful!
 // import { saltAndHashPassword } from "@/utils/password";
+// import { getUserFromDb } from "@/utils/user";
+// import { PrismaAdapter } from "@auth/prisma-adapter";
+// import prisma from "@/utils/prisma";
+// import bcryptjs from "bcryptjs";
 
 // export const { handlers, signIn, signOut, auth } = NextAuth({
+//   adapter: PrismaAdapter(prisma),
 //   providers: [
 //     Credentials({
 //       // You can specify which fields should be submitted, by adding keys to the `credentials` object.
 //       // e.g. domain, username, password, 2FA token, etc.
 //       credentials: {
-//         email: {},
-//         password: {},
+//         email: { label: "Email", type: "email" },
+//         password: { label: "Password", type: "password" },
 //       },
 //       authorize: async (credentials) => {
-//         let user = null;
+//         try {
+//           //   let user = null;
 
-//         // logic to salt and hash password
-//         const pwHash = saltAndHashPassword(credentials.password);
+//           if (!credentials?.email || !credentials?.password) {
+//             throw new Error("Email та пароль обов'язкові");
+//           }
 
-//         // logic to verify if the user exists
-//         user = await getUserFromDb(credentials.email, pwHash);
+//           const { email, password } = await signInSchema.parseAsync(
+//             credentials
+//           );
 
-//         if (!user) {
-//           // No user found, so this is their first attempt to login
-//           // Optionally, this is also the place you could do a user registration
-//           throw new Error("Invalid credentials.");
+//           // logic to salt and hash password
+//           //   const pwHash = saltAndHashPassword(password);
+
+//           // logic to verify if the user exists
+//           //   user = await getUserFromDb(email, pwHash);
+//           const user = await getUserFromDb(email);
+
+//           if (!user || !user.password) {
+//             throw new Error("Невірне введення даних / Invalid credentials.");
+//           }
+
+//           const isPasswordValid = await bcryptjs.compare(
+//             password,
+//             user.password
+//           );
+
+//           // return JSON object with the user data
+//           return user;
+//         } catch (error) {
+//           if (error instanceof ZodError) {
+//             // Return `null` to indicate that the credentials are invalid
+//             return null;
+//           }
 //         }
-
-//         // return user object with their profile data
-//         return user;
 //       },
 //     }),
 //   ],
 // });
-
-// // import NextAuth from "next-auth";
-
-// // export const { handlers, signIn, signOut, auth } = NextAuth({
-// //   providers: [],
-// // });
