@@ -1,6 +1,6 @@
 "use client";
 
-// import { signInWithCredentials } from "@/actions/sign-in";
+import { signInWithCredentials } from "@/actions/sign-in";
 import { Button, Form, Input } from "@heroui/react";
 import { useState } from "react";
 
