@@ -9,12 +9,12 @@ const NotFoundPage = () => {
       <div className="text-8xl font-bold text-gray-300">404</div>
 
       <h1 className="text-3xl font-bold tracking-tight">
-        Сторінка не знайдена
+        Сторінку не знайдено
       </h1>
 
       <div className="pt-6">
         <Button as={Link} color="primary" variant="shadow" href="/">
-          Повернутись на головну
+          Повернутись на головну...
         </Button>
       </div>
     </div>
@@ -22,13 +22,3 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
-
-// const NotFoundPage = () => {
-//   return (
-//     <div>
-//       <h1>NotFoundPage</h1>
-//     </div>
-//   );
-// };
-
-// export default NotFoundPage;

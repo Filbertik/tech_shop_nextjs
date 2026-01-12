@@ -1,14 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-// edit must be
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -17,20 +10,18 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  email String @unique
-  password String
+  id          String    @id @default(uuid())
+  email       String    @unique
+  password    String
 
   accounts      Account[]
   sessions      Session[]
 
-  createdAt DateTime @default(now()) @map("created_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
 
   @@map("users")
 }
-
-// 77
 
 model Account {
   id                 String  @id @default(cuid())
@@ -61,19 +52,7 @@ model Session {
  
   @@map("sessions")
 }
- 
-// model User {
-//   id            String    @id @default(cuid())
-//   name          String?
-//   email         String?   @unique
-//   emailVerified DateTime? @map("email_verified")
-//   image         String?
-//   accounts      Account[]
-//   sessions      Session[]
- 
-//   @@map("users")
-// }
- 
+
 model VerificationToken {
   identifier String
   token      String
@@ -81,4 +60,56 @@ model VerificationToken {
  
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model Ingredient {
+  id            String   @id @default(uuid())
+  name          String
+  category      Category
+  unit          Unit
+  pricePerUnit  Float?
+  description   String?
+  recipes       RecipeIngredient[]
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("ingredients")
+}
+
+enum Category {
+  VEGETABLES
+  FRUITS
+  MEAT
+  DAIRY
+  SPICES
+  OTHER
+}
+
+enum Unit {
+  GRAMS
+  KILOGRAMS
+  LITERS
+  MILLILITERS
+  PIECES
+}
+
+model Recipe {
+id          String          @id @default(uuid())
+name        String
+description String
+imageUrl    String?         @map("image_url")
+ingredients RecipeIngredient[]
+
+@@map("recipes")
+}
+
+model RecipeIngredient {
+id           String  @id @default(uuid())
+recipe       Recipe  @relation(fields: [recipeId], references: [id])
+recipeId     String
+ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+ingredientId String
+quantity     Float
+
+@@map("recipe_ingredient")
 }

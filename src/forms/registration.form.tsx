@@ -1,9 +1,7 @@
 "use client";
 
 import { registerUser } from "@/actions/register";
-// import { prisma } from "@/utils/prisma";
 import { Button, Form, Input } from "@heroui/react";
-import { log } from "console";
 import { useState } from "react";
 
 interface IProps {
@@ -23,24 +21,8 @@ const RegistrationForm = ({ onClose }: IProps) => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    // "use server";
-
     e.preventDefault();
-    console.log("Form submitted:", formData);
     await registerUser(formData);
-
-    // const user = await prisma.user.create({
-    //   data: {
-    //     email: formData.email,
-    //     password: formData.password,
-    //   },
-    // });
-
-    // console.log("user", user);
-
-    const result = await registerUser(formData);
-
-    console.log(result);
 
     onClose();
   };
@@ -78,14 +60,14 @@ const RegistrationForm = ({ onClose }: IProps) => {
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         validate={(value) => {
           if (!value) return "Пароль обов'язковий";
-          if (value.length < 6) return "Пароль має бути не менш 6 символів";
+          if (value.length < 6) return "Пароль має бути не меньше 6 символів";
           return null;
         }}
       />
       <Input
         isRequired
         name="confirmPassword"
-        placeholder="Підтвердіть пароль"
+        placeholder="Підтвердьте пароль"
         type="password"
         value={formData.confirmPassword}
         classNames={{
@@ -96,8 +78,8 @@ const RegistrationForm = ({ onClose }: IProps) => {
           setFormData({ ...formData, confirmPassword: e.target.value })
         }
         validate={(value) => {
-          if (!value) return "Пароль для підтвердження обов'язковий";
-          if (value !== formData.password) return "Паролі не співпадають";
+          if (!value) return "Підтвердження паролю обов'язкове";
+          if (value !== formData.password) return "Паролі не співпадают";
           return null;
         }}
       />

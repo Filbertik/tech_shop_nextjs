@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Финальный проект для курса по Nextjs (Татарская кухня)
 
-## Getting Started
+https://www.youtube.com/watch?v=KZb53sf-PEg    
 
-First, run the development server:
+В этом видео мы будем изучать фреймворк Next.js 15 на примере создания проекта "Рецепты татарской кухни" с применением современного стека технологий: HeroUI, Zustand, PostgreSQL, Prisma, Auth.js и Zod.    
+Пошагово разберем процесс разработки веб-приложения, включая инициализацию проекта, настройку структуры, файловый роутинг, серверные действия, middleware, создание страниц и многое другое 
+Работать с базой данных будем через Prisma, реализуем авторизацию и регистрацию с Auth.js, а интерфейс под это сделаем на HeroUI    
+Научимся тестировать проект через Postman и использовать pgAdmin    
+Будем хранить состояние авторизации и другую логику в Zustand    
+Решим огромную кучу проблем, пофиксим баги и получим разнообразный опыт    
+В финале перенесем БД в облачную Prisma Data platform и успешно задиплоим на Vercel!    
+    
+00:00 Вступление    
+03:12 Инициализируем проект     
+08:03 Структура проекта Nextjs     
+15:11 Устанавливаем HeroUI     
+21:53 Работаем над Header     
+26:25 Разрабатываем меню     
+34:09 Страница not-found     
+35:12 Главный layout     
+40:35 Формы логина и реги     
+45:44 Модальные окна логина и реги     
+50:47 Ставим Prisma ORM     
+53:10 Подключаем БД     
+56:12 Prisma client     
+59:59 Регистрация    
+01:06:12 Подключаем Auth JS     
+01:20:21 Авторизация     
+01:21:07 Logout     
+01:23:10 Проверки при регистрации     
+01:27:01 useSession     
+01:30:45 useAuthStore на Zustand     
+01:36:59 Создание appLoader         
+01:38:38 Загрузка для кнопок         
+01:43:14 siteConfig.ts         
+01:46:32 route.js     
+01:48:54 Тестим через Postman     
+01:51:13 Страница About     
+01:56:22 Экранирование     
+02:01:37 Layout для страниц     
+02:02:17 Всё для Ingredients    
+02:36:59 Middleware    
+02:42:01 Делаем роутинг в папках     
+02:44:12 Всё для Recipes     
+03:16:17 Диплой на Vercel     
+03:32:13 Конец    
+    
+<img width="491" height="241" alt="image" src="https://github.com/user-attachments/assets/9cb3b292-9b36-4171-90dd-1fa63a91a2d8" />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

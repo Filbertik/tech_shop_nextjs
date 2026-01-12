@@ -10,11 +10,7 @@ interface IProps {
 
 const RegistrationModal = ({ isOpen, onClose }: IProps) => {
   return (
-    <CustomModal
-      isOpen={isOpen}
-      onClose={onClose}
-      title="Реєстація / Створити_акаунт"
-    >
+    <CustomModal isOpen={isOpen} onClose={onClose} title="Створити акаунт">
       <RegistrationForm onClose={onClose} />
     </CustomModal>
   );
