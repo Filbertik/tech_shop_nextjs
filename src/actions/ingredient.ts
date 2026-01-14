@@ -13,7 +13,7 @@ export async function createIngredient(formData: FormData) {
       pricePerUnit: formData.get("pricePerUnit")
         ? parseFloat(formData.get("pricePerUnit") as string)
         : null,
-      description: formData.get("description") as string
+      description: formData.get("description") as string,
     };
 
     const validatedData = ingredientSchema.parse(data);
@@ -24,8 +24,8 @@ export async function createIngredient(formData: FormData) {
         category: validatedData.category,
         unit: validatedData.unit,
         pricePerUnit: validatedData.pricePerUnit,
-        description: validatedData.description
-      }
+        description: validatedData.description,
+      },
     });
 
     return { success: true, ingredient };
@@ -34,8 +34,8 @@ export async function createIngredient(formData: FormData) {
       return { error: error.errors.map((e) => e.message).join(", ") };
     }
 
-    console.error("Ошибка создания ингредиента:", error);
-    return { error: "Ошибка при создании ингредиента" };
+    console.error("Помилка створення:", error);
+    return { error: "Помилка створення" };
   }
 }
 
@@ -45,20 +45,20 @@ export async function getIngredients() {
 
     return { success: true, ingredients };
   } catch (error) {
-    console.error("Ошибка получения ингредиентов:", error);
-    return { error: "Ошибка при получении ингредиентов" };
+    console.error("Помилка отримання даних:", error);
+    return { error: "Помилка отримання даних" };
   }
 }
 
 export async function deleteIngredient(id: string) {
   try {
     const ingredient = await prisma.ingredient.delete({
-      where: { id }
+      where: { id },
     });
 
     return { success: true, ingredient };
   } catch (error) {
-    console.error("Ошибка удаления ингредиента:", error);
-    return { error: "Ошибка при удалении ингредиента" };
+    console.error("Помилка видалення:", error);
+    return { error: "Помилка видалення" };
   }
 }
