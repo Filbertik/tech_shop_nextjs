@@ -84,7 +84,7 @@ export default function Header() {
       <NavbarBrand>
         <Link href="/" className="flex gap-1">
           <Logo />
-          <p className="font-bold text-inherit">{siteConfig.title}</p>
+          {/* <p className="font-bold text-inherit">{siteConfig.title}</p> */}
         </Link>
       </NavbarBrand>
 
