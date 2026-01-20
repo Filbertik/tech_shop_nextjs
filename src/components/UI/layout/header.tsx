@@ -97,7 +97,7 @@ export default function Header() {
       <div className="w-full bg-white flex justify-center">
         <div className="w-[1440px] px-[80px] h-[44px] flex items-center">
           <Navbar style={{ height: layoutConfig.headerHeight }}>
-            <NavbarBrand>
+            <NavbarBrand className="mr-[74px]">
               <Link href="/" className="flex gap-1">
                 <Logo />
               </Link>
