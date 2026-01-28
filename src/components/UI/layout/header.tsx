@@ -100,12 +100,27 @@ export default function Header() {
 
               {/* SEARCH */}
               <div className="w-[390px] ml-[74px] relative flex-shrink-0">
-                <input
+                {/* <input
                   type="text"
                   placeholder="Я шукаю"
                   className="w-full h-full pl-[14px] pr-[40px]
                   border border-[var(--borders)] rounded-[4px]
                   outline-none text-sm"
+                /> */}
+
+                <input
+                  type="text"
+                  placeholder="Я шукаю"
+                  className="
+    w-[390px]
+    h-[44px]
+    px-[14px]
+    pr-[40px]
+    border border-[var(--borders)]
+    rounded-[4px]
+    outline-none
+    text-sm
+  "
                 />
                 <Image
                   src="/MagnifyingGlass.svg"
