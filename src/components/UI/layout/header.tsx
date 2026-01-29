@@ -110,17 +110,17 @@ export default function Header() {
 
                 <input
                   type="text"
-                  placeholder="Я шукаю"
+                  placeholder="Я шукаю."
                   className="
-    w-[390px]
-    h-[44px]
-    px-[14px]
-    pr-[40px]
-    border border-[var(--borders)]
-    rounded-[4px]
-    outline-none
-    text-sm
-  "
+                  w-[390px]
+                  h-[44px]
+                  px-[14px]
+                  pr-[40px]
+                  border border-[var(--borders)]
+                  rounded-[4px]
+                  outline-none
+                  text-sm
+                  "
                 />
                 <Image
                   src="/MagnifyingGlass.svg"
