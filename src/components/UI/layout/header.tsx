@@ -110,7 +110,7 @@ export default function Header() {
 
                 <input
                   type="text"
-                  placeholder="Я шукаю."
+                  placeholder="Я шукаю.."
                   className="
                   w-[390px]
                   h-[44px]
