@@ -102,7 +102,7 @@ export default function Header() {
               <div className="w-[390px] ml-[74px] relative flex-shrink-0">
                 {/* <input
                   type="text"
-                  placeholder="Я шукаю"
+                  placeholder="Я шукаю..."
                   className="w-full h-full pl-[14px] pr-[40px]
                   border border-[var(--borders)] rounded-[4px]
                   outline-none text-sm"
@@ -110,7 +110,7 @@ export default function Header() {
 
                 <input
                   type="text"
-                  placeholder="Я шукаю.."
+                  placeholder="Я шукаю..."
                   className="
                   w-[390px]
                   h-[44px]
