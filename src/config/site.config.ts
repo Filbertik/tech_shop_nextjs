@@ -2,7 +2,7 @@ export const siteConfig = {
   title: "Tech Hive",
   description: "Tech Shop",
   navItems: [
-    { href: "/", label: "Каталог" },
+    { href: "/", label: "" },
     { href: "/ingredients", label: "Акції" },
     { href: "/contacts", label: "Контакти" },
     { href: "/about", label: "Доставка" },
