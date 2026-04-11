@@ -12,21 +12,21 @@ import Title from "@/components/UI/layout/title";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: siteConfig.title,
-  description: siteConfig.description
+  description: siteConfig.description,
 };
 
 export default async function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -43,12 +43,17 @@ export default async function RootLayout({
               <div className="flex min-h-screen flex-col justify-between">
                 <div className="flex flex-col">
                   <Header />
-                  <main
+                  <main className="flex flex-col w-full">
+                    <Title />
+                    {children}
+                  </main>
+
+                  {/* <main
                     className={`flex flex-col max-w-[1024px] mx-auto px-[24px] justify-start items-center`}
                   >
                     <Title />
                     {children}
-                  </main>
+                  </main> */}
                 </div>
 
                 <footer
