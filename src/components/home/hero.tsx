@@ -32,7 +32,8 @@ const slides: Slide[] = [
   {
     id: 3,
     title: "ASUS Vivobook",
-    subtitle: "Легкий у формі. Потужний у дії.",
+    // subtitle: "Легкий у формі. Потужний у дії.",
+    subtitle: "Легкий у формі.\nПотужний у дії.",
     buttonText: "Переглянути",
     link: "/catalog",
     image: "/images/hero/hero-3.png",
