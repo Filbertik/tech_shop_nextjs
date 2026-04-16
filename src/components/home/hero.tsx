@@ -72,9 +72,13 @@ export default function Hero() {
         <div className="px-6 md:px-20 max-w-xl text-white">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h1>
 
-          <p className="text-base md:text-lg mb-6 opacity-90">
+          <p className="text-base md:text-lg mb-6 opacity-90 whitespace-pre-line">
             {slide.subtitle}
           </p>
+
+          {/* <p className="text-base md:text-lg mb-6 opacity-90">
+            {slide.subtitle}
+          </p> */}
 
           <Link href={slide.link}>
             <button className="bg-blue-600 hover:bg-blue-700 transition px-6 py-3 rounded-xl">
