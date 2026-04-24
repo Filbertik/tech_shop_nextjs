@@ -13,7 +13,7 @@ export default function Categories() {
         {/* блок з картинками */}
         <div className="flex gap-[24px] mt-[28px]">
           <Image
-            src="/images/Categories/Frame 28.png"
+            src="/images/Categories/Frame 119.png"
             alt="Category 1"
             width={302}
             height={232}
@@ -21,7 +21,7 @@ export default function Categories() {
           />
 
           <Image
-            src="/images/Categories/Frame 118.png"
+            src="/images/Categories/Frame 120.png"
             alt="Category 2"
             width={302}
             height={232}
@@ -29,7 +29,7 @@ export default function Categories() {
           />
 
           <Image
-            src="/images/Categories/Frame 119.png"
+            src="/images/Categories/Frame 28.png"
             alt="Category 3"
             width={302}
             height={232}
@@ -37,7 +37,7 @@ export default function Categories() {
           />
 
           <Image
-            src="/images/Categories/Frame 120.png"
+            src="/images/Categories/Frame 118.png"
             alt="Category 4"
             width={302}
             height={232}
