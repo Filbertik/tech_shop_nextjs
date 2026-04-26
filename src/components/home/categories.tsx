@@ -6,7 +6,7 @@ export default function Categories() {
       {/* контейнер 1440 */}
       <div className="w-[1440px] h-[308px] flex flex-col items-center">
         {/* заголовок */}
-        <h2 className="font-semibold text-[32px] leading-[150%] text-center text-black">
+        <h2 className="font-[var(--font-family)] font-semibold text-[32px] leading-[150%] text-center text-black">
           Популярні категорії
         </h2>
 
@@ -17,7 +17,7 @@ export default function Categories() {
             alt="Category 1"
             width={302}
             height={232}
-            className="object-cover"
+            className="w-[302px] h-[232px] object-cover rounded-[4px]"
           />
 
           <Image
@@ -25,7 +25,7 @@ export default function Categories() {
             alt="Category 2"
             width={302}
             height={232}
-            className="object-cover"
+            className="w-[302px] h-[232px] object-cover rounded-[4px]"
           />
 
           <Image
@@ -33,7 +33,7 @@ export default function Categories() {
             alt="Category 3"
             width={302}
             height={232}
-            className="object-cover"
+            className="w-[302px] h-[232px] object-cover rounded-[4px]"
           />
 
           <Image
@@ -41,19 +41,10 @@ export default function Categories() {
             alt="Category 4"
             width={302}
             height={232}
-            className="object-cover"
+            className="w-[302px] h-[232px] object-cover rounded-[4px]"
           />
         </div>
       </div>
     </section>
   );
 }
-
-// export default function Categories() {
-//   return (
-//     <section>
-//       <h2 className="text-2xl font-semibold mb-4">Categories</h2>
-//       <p>Категорії товарів.</p>
-//     </section>
-//   );
-// }
