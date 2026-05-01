@@ -94,71 +94,75 @@ export default function Header() {
       </div>
 
       {/* MAIN NAVBAR */}
-      <Navbar style={{ height: layoutConfig.headerHeight }}>
-        <NavbarBrand>
-          <Link href="/" className="flex gap-1">
-            <Logo />
-          </Link>
-        </NavbarBrand>
+      <div className="w-full bg-white flex justify-center">
+        <div className="w-[1440px] px-[80px] h-[44px] flex items-center">
+          <Navbar style={{ height: layoutConfig.headerHeight }}>
+            <NavbarBrand>
+              <Link href="/" className="flex gap-1">
+                <Logo />
+              </Link>
+            </NavbarBrand>
 
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          {getNavItems()}
-        </NavbarContent>
+            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+              {getNavItems()}
+            </NavbarContent>
 
-        <NavbarContent justify="end">
-          {isAuth && <p>Привіт, {session?.user?.email}!</p>}
+            <NavbarContent justify="end">
+              {isAuth && <p>Привіт, {session?.user?.email}!</p>}
 
-          {status === "loading" ? (
-            <p>Загрузка...</p>
-          ) : !isAuth ? (
-            <>
-              <NavbarItem>
-                <Button
-                  as={Link}
-                  color="secondary"
-                  href="#"
-                  variant="flat"
-                  onPress={() => setIsLoginOpen(true)}
-                >
-                  Логін
-                </Button>
-              </NavbarItem>
-              <NavbarItem>
-                <Button
-                  as={Link}
-                  color="primary"
-                  href="#"
-                  variant="flat"
-                  onPress={() => setIsRegistrationOpen(true)}
-                >
-                  Реєстрація
-                </Button>
-              </NavbarItem>
-            </>
-          ) : (
-            <NavbarItem>
-              <Button
-                as={Link}
-                color="secondary"
-                href="#"
-                variant="flat"
-                onPress={handleSignOut}
-              >
-                Вихід
-              </Button>
-            </NavbarItem>
-          )}
-        </NavbarContent>
+              {status === "loading" ? (
+                <p>Загрузка...</p>
+              ) : !isAuth ? (
+                <>
+                  <NavbarItem>
+                    <Button
+                      as={Link}
+                      color="secondary"
+                      href="#"
+                      variant="flat"
+                      onPress={() => setIsLoginOpen(true)}
+                    >
+                      Логін
+                    </Button>
+                  </NavbarItem>
+                  <NavbarItem>
+                    <Button
+                      as={Link}
+                      color="primary"
+                      href="#"
+                      variant="flat"
+                      onPress={() => setIsRegistrationOpen(true)}
+                    >
+                      Реєстрація
+                    </Button>
+                  </NavbarItem>
+                </>
+              ) : (
+                <NavbarItem>
+                  <Button
+                    as={Link}
+                    color="secondary"
+                    href="#"
+                    variant="flat"
+                    onPress={handleSignOut}
+                  >
+                    Вихід
+                  </Button>
+                </NavbarItem>
+              )}
+            </NavbarContent>
 
-        <RegistrationModal
-          isOpen={isRegistrationOpen}
-          onClose={() => setIsRegistrationOpen(false)}
-        />
-        <LoginModal
-          isOpen={isLoginOpen}
-          onClose={() => setIsLoginOpen(false)}
-        />
-      </Navbar>
+            <RegistrationModal
+              isOpen={isRegistrationOpen}
+              onClose={() => setIsRegistrationOpen(false)}
+            />
+            <LoginModal
+              isOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
+          </Navbar>
+        </div>
+      </div>
     </>
   );
 }
