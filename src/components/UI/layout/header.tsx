@@ -80,68 +80,85 @@ export default function Header() {
   };
 
   return (
-    <Navbar style={{ height: layoutConfig.headerHeight }}>
-      <NavbarBrand>
-        <Link href="/" className="flex gap-1">
-          <Logo />
-          {/* <p className="font-bold text-inherit">{siteConfig.title}</p> */}
-        </Link>
-      </NavbarBrand>
+    <>
+      {/* TOP BANNER */}
+      <div
+        className="w-full h-[48px] flex items-center justify-center text-white text-sm font-medium"
+        style={{
+          backgroundImage: "url('/80.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        Безкоштовна доставка від 2000₴
+      </div>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {getNavItems()}
-      </NavbarContent>
+      {/* MAIN NAVBAR */}
+      <Navbar style={{ height: layoutConfig.headerHeight }}>
+        <NavbarBrand>
+          <Link href="/" className="flex gap-1">
+            <Logo />
+          </Link>
+        </NavbarBrand>
 
-      <NavbarContent justify="end">
-        {isAuth && <p>Привіт, {session?.user?.email}!</p>}
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          {getNavItems()}
+        </NavbarContent>
 
-        {status === "loading" ? (
-          <p>Загрузка...</p>
-        ) : !isAuth ? (
-          <>
+        <NavbarContent justify="end">
+          {isAuth && <p>Привіт, {session?.user?.email}!</p>}
+
+          {status === "loading" ? (
+            <p>Загрузка...</p>
+          ) : !isAuth ? (
+            <>
+              <NavbarItem>
+                <Button
+                  as={Link}
+                  color="secondary"
+                  href="#"
+                  variant="flat"
+                  onPress={() => setIsLoginOpen(true)}
+                >
+                  Логін
+                </Button>
+              </NavbarItem>
+              <NavbarItem>
+                <Button
+                  as={Link}
+                  color="primary"
+                  href="#"
+                  variant="flat"
+                  onPress={() => setIsRegistrationOpen(true)}
+                >
+                  Реєстрація
+                </Button>
+              </NavbarItem>
+            </>
+          ) : (
             <NavbarItem>
               <Button
                 as={Link}
                 color="secondary"
                 href="#"
                 variant="flat"
-                onPress={() => setIsLoginOpen(true)}
+                onPress={handleSignOut}
               >
-                Логін
+                Вихід
               </Button>
             </NavbarItem>
-            <NavbarItem>
-              <Button
-                as={Link}
-                color="primary"
-                href="#"
-                variant="flat"
-                onPress={() => setIsRegistrationOpen(true)}
-              >
-                Реєстрація
-              </Button>
-            </NavbarItem>
-          </>
-        ) : (
-          <NavbarItem>
-            <Button
-              as={Link}
-              color="secondary"
-              href="#"
-              variant="flat"
-              onPress={handleSignOut}
-            >
-              Вихід
-            </Button>
-          </NavbarItem>
-        )}
-      </NavbarContent>
+          )}
+        </NavbarContent>
 
-      <RegistrationModal
-        isOpen={isRegistrationOpen}
-        onClose={() => setIsRegistrationOpen(false)}
-      />
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-    </Navbar>
+        <RegistrationModal
+          isOpen={isRegistrationOpen}
+          onClose={() => setIsRegistrationOpen(false)}
+        />
+        <LoginModal
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
+      </Navbar>
+    </>
   );
 }
