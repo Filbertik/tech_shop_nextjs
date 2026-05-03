@@ -22,12 +22,19 @@ const products = [
       "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
     price: "24 199 ₴",
   },
+  {
+    image: "Product photo3.png",
+    title:
+      "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
+    price: "26 899 ₴",
+  },
 ];
 
 export default function Bestsellers() {
   return (
     <section className="w-full flex justify-center mt-14">
-      <div className="w-[1440px] flex flex-col items-center">
+      {/* контейнер */}
+      <div className="w-[1440px] h-[581px] flex flex-col items-center">
         {/* заголовок */}
         <h2 className="font-[var(--font-family)] font-semibold text-[32px] leading-[150%] text-center text-black">
           Хіти продажів
@@ -38,7 +45,7 @@ export default function Bestsellers() {
           {products.map((product, i) => (
             <div
               key={i}
-              className="p-[30px_20px] w-[302px] h-[427px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white rounded-[4px] flex flex-col justify-between"
+              className="p-[30px_20px] w-[302px] h-[427px] bg-white rounded-[4px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] flex flex-col justify-between"
             >
               {/* картинка */}
               <Image
@@ -49,8 +56,9 @@ export default function Bestsellers() {
                 className="w-[262px] h-[197px] object-contain mx-auto"
               />
 
-              {/* опис */}
+              {/* контент */}
               <div className="mt-4 flex flex-col gap-2">
+                {/* опис */}
                 <p className="font-[var(--font-family)] text-[16px] leading-[150%] text-[var(--black)]">
                   {product.title}
                 </p>
@@ -85,7 +93,7 @@ export default function Bestsellers() {
 
         {/* кнопка */}
         <Link href="/catalog">
-          <button className="mt-[28px] rounded-[4px] px-[32px] py-[12px] w-[175px] h-[50px] bg-[var(--accent)] text-white transition hover:opacity-90">
+          <button className="mt-[28px] w-[175px] h-[50px] px-[32px] py-[12px] rounded-[4px] bg-[var(--accent)] text-white transition hover:opacity-90">
             Дивитись всі
           </button>
         </Link>
@@ -93,12 +101,3 @@ export default function Bestsellers() {
     </section>
   );
 }
-
-// export default function Bestsellers() {
-//   return (
-//     <section>
-//       <h2 className="text-2xl font-semibold mb-4">Bestsellers</h2>
-//       <p>Популярні товари.</p>
-//     </section>
-//   );
-// }
