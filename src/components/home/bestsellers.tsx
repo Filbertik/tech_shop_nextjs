@@ -94,7 +94,7 @@ export default function Bestsellers() {
         {/* кнопка */}
         <Link href="/catalog">
           <button className="mt-[28px] w-[175px] h-[50px] px-[32px] py-[12px] rounded-[4px] bg-[var(--accent)] text-white transition hover:opacity-90">
-            Дивитись всі
+            Дивитись всі.
           </button>
         </Link>
       </div>
