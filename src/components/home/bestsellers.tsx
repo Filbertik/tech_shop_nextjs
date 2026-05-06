@@ -88,10 +88,15 @@ export default function Bestsellers() {
 
         {/* кнопка */}
         <Link href="/catalog">
+          <button className="mt-[28px] w-[175px] h-[50px] px-[32px] py-[12px] rounded-[4px] bg-blue-600 text-white hover:bg-blue-700 transition">
+            Дивитись всі
+          </button>
+        </Link>
+        {/* <Link href="/catalog">
           <button className="mt-[28px] w-[175px] h-[50px] px-[32px] py-[12px] rounded-[4px] bg-[var(--accent)] text-white transition hover:opacity-90">
             Дивитись всі.
           </button>
-        </Link>
+        </Link> */}
       </div>
     </section>
   );
