@@ -14,22 +14,22 @@ const products = [
   {
     image: "Product photo1.png",
     title:
-      "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
-    price: "27 499 ₴",
+      "Монітор 27'' ASUS TUF Gaming VG27AQ5A QHD IPS 210Hz (90LM0BN0-B01371)",
+    price: "9 499 ₴",
     rating: 5,
   },
   {
     image: "Product photo2.png",
     title:
-      "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
-    price: "24 199 ₴",
+      "Відеокарта Sapphire AMD Radeon RX 7900 XTX 24Gb Nitro+ GAMING OC VAPOR-X ...",
+    price: "33 129 ₴",
     rating: 3,
   },
   {
     image: "Product photo3.png",
     title:
-      "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
-    price: "26 899 ₴",
+      "Ноутбук Dell 1'' Latitude 5410, i5-10310U, 8 GB, 240 GB, Intel UHD Graphics, 1920x1080",
+    price: "15 329 ₴",
     rating: 4,
   },
 ];
