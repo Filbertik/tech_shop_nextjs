@@ -108,7 +108,7 @@ export default function Bestsellers() {
                   </p>
                 </div>
 
-                {/* 🔥 КНОПКА (зʼявляється при hover) */}
+                {/* КНОПКА (зʼявляється при hover) */}
                 <div
                   className="
                     absolute
@@ -134,7 +134,7 @@ export default function Bestsellers() {
                     "
                     onClick={(e) => e.preventDefault()}
                   >
-                    В кошик
+                    У кошик
                   </button>
                 </div>
               </div>
