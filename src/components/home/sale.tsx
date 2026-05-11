@@ -28,7 +28,7 @@ const products = [
     title:
       "Монітор 27'' 2E GAMING G2725BV Curved QHD VA 180Hz (2E-G2725BV-01.UA)",
     price: "6 699 ₴",
-    rating: 4,
+    rating: 2,
   },
 ];
 
