@@ -8,21 +8,20 @@ const products = [
     image: "Product photo4.png",
     title: "Миша Razer DeathAdder Essential USB Black (RZ01-03850100-R3M1)",
     price: "999 ₴",
-    rating: 4,
+    rating: 5,
   },
   {
     image: "Product photo5.png",
     title:
       "Процесор Intel Core Ultra 5 245K (BX80768245K) (Socket 1851, 14T, 5.2 ГГц, Box)",
     price: "11 299 ₴",
-    rating: 5,
+    rating: 0,
   },
   {
     image: "Product photo6.png",
-    title:
-      "Відеокарта Sapphire AMD Radeon RX 7900 XTX 24Gb Nitro+ GAMING OC VAPOR-X ...",
-    price: "33 129 ₴",
-    rating: 3,
+    title: "Навушники JBL Tune 770NC White (JBLT770NCWHT)",
+    price: "3 499 ₴",
+    rating: 2,
   },
   {
     image: "Product photo7.png",
