@@ -6,9 +6,8 @@ import Link from "next/link";
 const products = [
   {
     image: "Product photo.png",
-    title:
-      "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
-    price: "25 999 ₴",
+    title: "Миша Razer DeathAdder Essential USB Black (RZ01-03850100-R3M1)",
+    price: "999 ₴",
     rating: 4,
   },
   {
