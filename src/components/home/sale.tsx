@@ -5,27 +5,27 @@ import Link from "next/link";
 
 const products = [
   {
-    image: "Product photo.png",
+    image: "Product photo4.png",
     title: "Миша Razer DeathAdder Essential USB Black (RZ01-03850100-R3M1)",
     price: "999 ₴",
     rating: 4,
   },
   {
-    image: "Product photo1.png",
+    image: "Product photo5.png",
     title:
       "Монітор 27'' ASUS TUF Gaming VG27AQ5A QHD IPS 210Hz (90LM0BN0-B01371)",
     price: "9 499 ₴",
     rating: 5,
   },
   {
-    image: "Product photo2.png",
+    image: "Product photo6.png",
     title:
       "Відеокарта Sapphire AMD Radeon RX 7900 XTX 24Gb Nitro+ GAMING OC VAPOR-X ...",
     price: "33 129 ₴",
     rating: 3,
   },
   {
-    image: "Product photo3.png",
+    image: "Product photo7.png",
     title:
       "Ноутбук Dell 1'' Latitude 5410, i5-10310U, 8 GB, 240 GB, Intel UHD Graphics, 1920x1080",
     price: "15 329 ₴",
@@ -64,7 +64,7 @@ export default function Bestsellers() {
               >
                 {/* картинка */}
                 <Image
-                  src={`/images/Bestsellers/${product.image}`}
+                  src={`/images/Sale/${product.image}`}
                   alt={product.title}
                   width={262}
                   height={197}
