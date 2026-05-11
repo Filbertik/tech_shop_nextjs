@@ -26,8 +26,8 @@ const products = [
   {
     image: "Product photo7.png",
     title:
-      "Ноутбук Dell 1'' Latitude 5410, i5-10310U, 8 GB, 240 GB, Intel UHD Graphics, 1920x1080",
-    price: "15 329 ₴",
+      "Монітор 27'' 2E GAMING G2725BV Curved QHD VA 180Hz (2E-G2725BV-01.UA)",
+    price: "6 699 ₴",
     rating: 4,
   },
 ];
