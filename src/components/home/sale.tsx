@@ -13,8 +13,8 @@ const products = [
   {
     image: "Product photo5.png",
     title:
-      "Монітор 27'' ASUS TUF Gaming VG27AQ5A QHD IPS 210Hz (90LM0BN0-B01371)",
-    price: "9 499 ₴",
+      "Процесор Intel Core Ultra 5 245K (BX80768245K) (Socket 1851, 14T, 5.2 ГГц, Box)",
+    price: "11 299 ₴",
     rating: 5,
   },
   {
