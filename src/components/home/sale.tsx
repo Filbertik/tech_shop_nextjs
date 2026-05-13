@@ -8,6 +8,7 @@ const products = [
     image: "Product photo4.png",
     title: "Миша Razer DeathAdder Essential USB Black (RZ01-03850100-R3M1)",
     price: "999 ₴",
+    oldPrice: "1 399 ₴",
     rating: 5,
   },
   {
@@ -15,12 +16,14 @@ const products = [
     title:
       "Процесор Intel Core Ultra 5 245K (BX80768245K) (Socket 1851, 14T, 5.2 ГГц, Box)",
     price: "11 299 ₴",
+    oldPrice: "11 999 ₴",
     rating: 0,
   },
   {
     image: "Product photo6.png",
     title: "Навушники JBL Tune 770NC White (JBLT770NCWHT)",
     price: "3 499 ₴",
+    oldPrice: "3 999 ₴",
     rating: 2,
   },
   {
@@ -28,6 +31,7 @@ const products = [
     title:
       "Монітор 27'' 2E GAMING G2725BV Curved QHD VA 180Hz (2E-G2725BV-01.UA)",
     price: "6 699 ₴",
+    oldPrice: "6 999 ₴",
     rating: 2,
   },
 ];
@@ -61,14 +65,26 @@ export default function Bestsellers() {
                   group-hover:shadow-lg
                 "
               >
-                {/* картинка */}
-                <Image
-                  src={`/images/Sale/${product.image}`}
-                  alt={product.title}
-                  width={262}
-                  height={197}
-                  className="w-[262px] h-[197px] object-contain mx-auto"
-                />
+                {/* IMAGE WRAPPER */}
+                <div className="relative flex justify-center">
+                  {/* SALE BADGE */}
+                  <Image
+                    src={`/images/Sale/sale bage.png`}
+                    alt="sale"
+                    width={50}
+                    height={50}
+                    className="absolute top-0 right-0"
+                  />
+
+                  {/* PRODUCT IMAGE */}
+                  <Image
+                    src={`/images/Sale/${product.image}`}
+                    alt={product.title}
+                    width={262}
+                    height={197}
+                    className="w-[262px] h-[197px] object-contain"
+                  />
+                </div>
 
                 {/* контент */}
                 <div className="mt-4 flex flex-col gap-2">
@@ -100,13 +116,30 @@ export default function Bestsellers() {
                     {product.title}
                   </p>
 
-                  {/* ціна */}
-                  <p className="font-semibold text-[18px] text-black mt-2">
-                    {product.price}
-                  </p>
+                  {/* ЦІНИ */}
+                  <div className="mt-2 flex flex-col gap-1">
+                    {/* стара ціна */}
+                    <span
+                      className="
+                        font-[var(--font-family)]
+                        font-normal
+                        text-[12px]
+                        leading-[100%]
+                        line-through
+                        text-[var(--gray)]
+                      "
+                    >
+                      {product.oldPrice}
+                    </span>
+
+                    {/* нова ціна */}
+                    <p className="font-semibold text-[18px] text-black">
+                      {product.price}
+                    </p>
+                  </div>
                 </div>
 
-                {/* КНОПКА (зʼявляється при hover) */}
+                {/* КНОПКА */}
                 <div
                   className="
                     absolute
