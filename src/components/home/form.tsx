@@ -141,7 +141,7 @@ export default function FormSection() {
                 py-[12px]
                 w-[350px]
                 h-[48px]
-                text-center
+                text-left
                 text-[16px]
                 placeholder:text-[#9c9c9c]
                 bg-transparent
