@@ -26,17 +26,29 @@ export default function FormSection() {
         {/* FORM WRAPPER */}
         <div
           className="
-            absolute
-            top-[60px]
-            left-[75px]
-            w-[866px]
-            h-[358px]
-            backdrop-blur-[27px]
-            flex
-            items-center
-            justify-between
-            px-[40px]
-          "
+    absolute
+    top-[60px]
+    left-[75px]
+    w-[866px]
+    h-[358px]
+    backdrop-blur-[27px]
+    flex
+    items-start
+    justify-between
+    px-[40px]
+  "
+          // className="
+          //   absolute
+          //   top-[60px]
+          //   left-[75px]
+          //   w-[866px]
+          //   h-[358px]
+          //   backdrop-blur-[27px]
+          //   flex
+          //   items-center
+          //   justify-between
+          //   px-[40px]
+          // "
         >
           {/* LEFT TEXT */}
           <div className="w-[476px] h-[116px] flex flex-col justify-start">
