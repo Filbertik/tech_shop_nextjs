@@ -39,7 +39,36 @@ export default function FormSection() {
           "
         >
           {/* LEFT TEXT */}
-          <div className="w-[476px] h-[116px] flex flex-col justify-between">
+          <div className="w-[476px] h-[116px] flex flex-col justify-start">
+            <h2
+              className="
+      font-[var(--font-family)]
+      font-semibold
+      text-[32px]
+      leading-[150%]
+      text-white
+      text-left
+    "
+            >
+              Потрібна допомога з вибором?
+            </h2>
+
+            <p
+              className="
+      mt-[8px]
+      font-[var(--font-family)]
+      font-normal
+      text-[18px]
+      leading-[150%]
+      text-white
+      text-left
+    "
+            >
+              Запитайте нас — підкажемо, який ПК, ноутбук або комплектуючі
+              підійдуть саме вам.
+            </p>
+          </div>
+          {/* <div className="w-[476px] h-[116px] flex flex-col justify-between">
             <h2
               className="
                 font-[var(--font-family)]
@@ -65,7 +94,7 @@ export default function FormSection() {
               Запитайте нас — підкажемо, який ПК, ноутбук або комплектуючі
               підійдуть саме вам.
             </p>
-          </div>
+          </div> */}
 
           {/* RIGHT FORM */}
           <div className="flex flex-col ml-[40px]">
