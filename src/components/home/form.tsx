@@ -1,21 +1,42 @@
 "use client";
 
 import Image from "next/image";
+import InputMask from "react-input-mask";
+import { useState } from "react";
 
 export default function FormSection() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comment, setComment] = useState("");
+
+  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
+
+  const validate = () => {
+    const newErrors: { name?: string; phone?: string } = {};
+
+    if (!name.trim()) {
+      newErrors.name = "Введіть ім’я";
+    }
+
+    if (!phone || phone.includes("_")) {
+      newErrors.phone = "Введіть коректний номер";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (!validate()) return;
+
+    console.log({ name, phone, comment });
+
+    // тут можна відправку зробити
+  };
+
   return (
     <section className="w-full flex justify-center mt-20">
-      {/* BACKGROUND */}
-      <div
-        className="
-          relative
-          w-[1440px]
-          h-[478px]
-          bg-[linear-gradient(317deg,#010100_0%,#11191b_100%)]
-          overflow-hidden
-        "
-      >
-        {/* фонове зображення */}
+      <div className="relative w-[1440px] h-[478px] bg-[linear-gradient(317deg,#010100_0%,#11191b_100%)] overflow-hidden">
         <Image
           src="/images/FormSection/unsplash_Im7lZjxeLhg.png"
           alt="background"
@@ -23,147 +44,78 @@ export default function FormSection() {
           className="object-cover opacity-40"
         />
 
-        {/* FORM WRAPPER */}
-        <div
-          className="
-    absolute
-    top-[60px]
-    left-[75px]
-    w-[866px]
-    h-[358px]
-    backdrop-blur-[27px]
-    flex
-    items-start
-    justify-between
-    px-[40px]
-  "
-          // className="
-          //   absolute
-          //   top-[60px]
-          //   left-[75px]
-          //   w-[866px]
-          //   h-[358px]
-          //   backdrop-blur-[27px]
-          //   flex
-          //   items-center
-          //   justify-between
-          //   px-[40px]
-          // "
-        >
+        <div className="absolute top-[60px] left-[75px] w-[866px] h-[358px] backdrop-blur-[27px] flex items-start justify-between px-[40px]">
           {/* LEFT TEXT */}
-          <div className="w-[476px] h-[116px] flex flex-col justify-start">
-            <h2
-              className="
-      font-[var(--font-family)]
-      font-semibold
-      text-[32px]
-      leading-[150%]
-      text-white
-      text-left
-    "
-            >
+          <div className="w-[476px] flex flex-col justify-start">
+            <h2 className="text-[32px] text-white text-left font-semibold">
               Потрібна допомога з вибором?
             </h2>
-
-            <p
-              className="
-      mt-[8px]
-      font-[var(--font-family)]
-      font-normal
-      text-[18px]
-      leading-[150%]
-      text-white
-      text-left
-    "
-            >
+            <p className="mt-[8px] text-[18px] text-white text-left">
               Запитайте нас — підкажемо, який ПК, ноутбук або комплектуючі
               підійдуть саме вам.
             </p>
           </div>
-          {/* <div className="w-[476px] h-[116px] flex flex-col justify-between">
-            <h2
-              className="
-                font-[var(--font-family)]
-                font-semibold
-                text-[32px]
-                leading-[150%]
-                text-center
-                text-white
-              "
-            >
-              Потрібна допомога з вибором?
-            </h2>
-
-            <p
-              className="
-                font-[var(--font-family)]
-                font-normal
-                text-[18px]
-                leading-[150%]
-                text-white
-              "
-            >
-              Запитайте нас — підкажемо, який ПК, ноутбук або комплектуючі
-              підійдуть саме вам.
-            </p>
-          </div> */}
 
           {/* RIGHT FORM */}
           <div className="flex flex-col ml-[40px]">
-            {/* INPUTS */}
+            {/* NAME */}
             <input
               type="text"
               placeholder="Ім’я"
-              className="
-                border border-[var(--bg2)]
-                rounded-[10px]
-                px-[10px]
-                py-[12px]
-                w-[350px]
-                h-[48px]
-                text-left
-                text-[16px]
-                placeholder:text-[#9c9c9c]
-                bg-transparent
-                text-white
-                outline-none
-              "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={`
+                border rounded-[10px] px-[14px] py-[12px]
+                w-[350px] h-[48px] text-left text-[16px]
+                bg-transparent text-white outline-none
+                ${errors.name ? "border-red-500" : "border-[var(--bg2)]"}
+              `}
             />
+            {errors.name && (
+              <span className="text-red-500 text-sm mt-1">{errors.name}</span>
+            )}
 
-            <input
-              type="text"
-              placeholder="Номер телефону"
-              className="
-                mt-[16px]
-                border border-[var(--bg2)]
-                rounded-[10px]
-                px-[10px]
-                py-[12px]
-                w-[350px]
-                h-[48px]
-                text-left
-                text-[16px]
-                placeholder:text-[#9c9c9c]
-                bg-transparent
-                text-white
-                outline-none
-              "
-            />
+            {/* PHONE */}
+            <InputMask
+              mask="+380 (99) 999 99 99"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            >
+              {(inputProps: any) => (
+                <input
+                  {...inputProps}
+                  type="text"
+                  placeholder="Номер телефону"
+                  className={`
+                    mt-[16px]
+                    border rounded-[10px] px-[14px] py-[12px]
+                    w-[350px] h-[48px] text-left text-[16px]
+                    bg-transparent text-white outline-none
+                    ${errors.phone ? "border-red-500" : "border-[var(--bg2)]"}
+                  `}
+                />
+              )}
+            </InputMask>
 
-            {/* TEXTAREA */}
+            {errors.phone && (
+              <span className="text-red-500 text-sm mt-1">{errors.phone}</span>
+            )}
+
+            {/* COMMENT */}
             <textarea
               placeholder="Коментар"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
               className="
                 mt-[16px]
                 border border-[var(--bg2)]
                 rounded-[10px]
-                px-[10px]
+                px-[14px]
                 py-[12px]
                 w-[350px]
                 h-[156px]
                 text-left
                 text-[16px]
-                placeholder:text-[#9c9c9c]
                 bg-transparent
                 text-white
                 outline-none
@@ -173,6 +125,7 @@ export default function FormSection() {
 
             {/* BUTTON */}
             <button
+              onClick={handleSubmit}
               className="
                 mt-[24px]
                 rounded-[4px]
