@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import InputMask from "react-input-mask";
+import { IMaskInput } from "react-imask";
 import { useState } from "react";
 
 export default function FormSection() {
@@ -18,7 +18,8 @@ export default function FormSection() {
       newErrors.name = "Введіть ім’я";
     }
 
-    if (!phone || phone.includes("_")) {
+    // довжина повного номера з маскою
+    if (!phone || phone.length < 19) {
       newErrors.phone = "Введіть коректний номер";
     }
 
@@ -31,7 +32,7 @@ export default function FormSection() {
 
     console.log({ name, phone, comment });
 
-    // тут можна відправку зробити
+    // тут буде API запит
   };
 
   return (
@@ -46,17 +47,18 @@ export default function FormSection() {
 
         <div className="absolute top-[60px] left-[75px] w-[866px] h-[358px] backdrop-blur-[27px] flex items-start justify-between px-[40px]">
           {/* LEFT TEXT */}
-          <div className="w-[476px] flex flex-col justify-start">
-            <h2 className="text-[32px] text-white text-left font-semibold">
+          <div className="w-[476px] flex flex-col">
+            <h2 className="text-[32px] text-white font-semibold text-left">
               Потрібна допомога з вибором?
             </h2>
+
             <p className="mt-[8px] text-[18px] text-white text-left">
               Запитайте нас — підкажемо, який ПК, ноутбук або комплектуючі
               підійдуть саме вам.
             </p>
           </div>
 
-          {/* RIGHT FORM */}
+          {/* FORM */}
           <div className="flex flex-col ml-[40px]">
             {/* NAME */}
             <input
@@ -66,7 +68,8 @@ export default function FormSection() {
               onChange={(e) => setName(e.target.value)}
               className={`
                 border rounded-[10px] px-[14px] py-[12px]
-                w-[350px] h-[48px] text-left text-[16px]
+                w-[350px] h-[48px]
+                text-left text-[16px]
                 bg-transparent text-white outline-none
                 ${errors.name ? "border-red-500" : "border-[var(--bg2)]"}
               `}
@@ -76,27 +79,20 @@ export default function FormSection() {
             )}
 
             {/* PHONE */}
-            <InputMask
-              mask="+380 (99) 999 99 99"
+            <IMaskInput
+              mask="+{380} (00) 000 00 00"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            >
-              {(inputProps: any) => (
-                <input
-                  {...inputProps}
-                  type="text"
-                  placeholder="Номер телефону"
-                  className={`
-                    mt-[16px]
-                    border rounded-[10px] px-[14px] py-[12px]
-                    w-[350px] h-[48px] text-left text-[16px]
-                    bg-transparent text-white outline-none
-                    ${errors.phone ? "border-red-500" : "border-[var(--bg2)]"}
-                  `}
-                />
-              )}
-            </InputMask>
-
+              onAccept={(value) => setPhone(value)}
+              placeholder="Номер телефону"
+              className={`
+                mt-[16px]
+                border rounded-[10px] px-[14px] py-[12px]
+                w-[350px] h-[48px]
+                text-left text-[16px]
+                bg-transparent text-white outline-none
+                ${errors.phone ? "border-red-500" : "border-[var(--bg2)]"}
+              `}
+            />
             {errors.phone && (
               <span className="text-red-500 text-sm mt-1">{errors.phone}</span>
             )}
