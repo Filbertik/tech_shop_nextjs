@@ -6,6 +6,7 @@ import Bestsellers from "@/components/home/bestsellers";
 import Sale from "@/components/home/sale";
 import Choice from "@/components/home/choice";
 import FormSection from "@/components/home/form";
+import Brands from "@/components/home/brands";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Sale />
         <Choice />
         <FormSection />
+        <Brands />
       </main>
     </>
   );
