@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/UI/layout/header";
 import { Providers } from "@/providers/provider";
 import { siteConfig } from "@/config/site.config";
-import { layoutConfig } from "@/config/layout.config";
+// import { layoutConfig } from "@/config/layout.config";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth/auth";
 import AppLoader from "@/hoc/app-loader";
@@ -57,12 +57,12 @@ export default async function RootLayout({
                   </main> */}
                 </div>
 
-                <footer
+                {/* <footer
                   className={`w-full flex items-center justify-center py-3`}
                   style={{ height: layoutConfig.footerHeight }}
                 >
                   <p>{siteConfig.description}</p>
-                </footer>
+                </footer> */}
                 <Footer />
               </div>
             </AppLoader>

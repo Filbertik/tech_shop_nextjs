@@ -14,7 +14,8 @@ const brands = [
 
 export default function Brands() {
   return (
-    <section className="flex justify-center mt-20">
+    // <section className="flex justify-center mt-20">
+    <section className="flex justify-center mt-20 mb-[40px]">
       <div className="w-[1440px] px-[80px]">
         {/* TEXT */}
         {/* <h2 className="text-2xl font-semibold mb-4 text-center">Our Brands</h2> */}
