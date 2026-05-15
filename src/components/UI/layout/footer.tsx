@@ -7,7 +7,7 @@ const Footer = () => {
   const pathname = usePathname();
 
   const currentNavItem = siteConfig.navItems.find(
-    (item) => item.href === pathname
+    (item) => item.href === pathname,
   );
 
   const pageTitle = currentNavItem ? currentNavItem.label : siteConfig.title;
@@ -15,6 +15,7 @@ const Footer = () => {
   return (
     <div className="w-full flex justify-center my-6">
       <h1 className="text-3xl font-bold">{pageTitle}</h1>
+      <h2>footer content</h2>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth/auth";
 import AppLoader from "@/hoc/app-loader";
 import Title from "@/components/UI/layout/title";
+import Footer from "@/components/UI/layout/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,12 +57,13 @@ export default async function RootLayout({
                   </main> */}
                 </div>
 
-                <footer
+                {/* <footer
                   className={`w-full flex items-center justify-center py-3`}
                   style={{ height: layoutConfig.footerHeight }}
                 >
                   <p>{siteConfig.description}</p>
-                </footer>
+                </footer> */}
+                <Footer />
               </div>
             </AppLoader>
           </SessionProvider>
