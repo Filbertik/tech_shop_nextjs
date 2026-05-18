@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,16 +16,45 @@ const categories = [
   { image: "Slide6.png", title: "З сенсорним екраном" },
 ];
 
-const products = new Array(18).fill(null).map((_, i) => ({
-  id: i,
-  image: "Product photo.png",
-  title: `Ноутбук ${i + 1}`,
-  rating: 4,
-  oldPrice: "25 000 грн",
-  price: "21 999 грн",
-}));
+type Product = {
+  id: number;
+  image: string;
+  title: string;
+  rating: number;
+  oldPrice: string;
+  price: string;
+};
 
 export default function Catalog() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const LIMIT = 9;
+
+  // 🔹 fake API
+  const fetchProducts = async (page: number) => {
+    // імітація API
+    const allProducts = new Array(50).fill(null).map((_, i) => ({
+      id: i,
+      image: "Product photo.png",
+      title: `Ноутбук ${i + 1}`,
+      rating: 4,
+      oldPrice: "25 000 грн",
+      price: "21 999 грн",
+    }));
+
+    const start = (page - 1) * LIMIT;
+    const end = start + LIMIT;
+
+    setProducts(allProducts.slice(start, end));
+    setTotalPages(Math.ceil(allProducts.length / LIMIT));
+  };
+
+  useEffect(() => {
+    fetchProducts(page);
+  }, [page]);
+
   return (
     <section className="w-full flex justify-center">
       <div className="w-[1440px] px-[80px] py-[40px]">
@@ -39,20 +69,12 @@ export default function Catalog() {
             height={16}
           />
 
-          {/* <Image
-            src="/images/Catalog/arrow-right.svg"
-            alt="arrow"
-            width={16}
-            height={16}
-          /> */}
-
           <span>Ноутбуки</span>
         </div>
 
         {/* 🔹 Title */}
         <h1 className="mt-[28px] text-[24px] font-semibold">Ноутбуки</h1>
 
-        {/* 🔹 MAIN CONTAINER */}
         <div className="mt-[28px] w-[1280px] flex gap-[24px]">
           {/* 🔹 SIDEBAR */}
           <aside className="w-[302px]">
@@ -61,30 +83,9 @@ export default function Catalog() {
             </div>
           </aside>
 
-          {/* 🔹 RIGHT CONTENT */}
+          {/* 🔹 RIGHT */}
           <div className="w-[954px]">
-            {/* 🔹 SLIDER (drag + snap) */}
             <CatalogSlider categories={categories} />
-
-            {/* 🔹 SORT */}
-            <div className="mt-[33px]">
-              <select
-                className="
-                  w-[182px]
-                  h-[36px]
-                  px-[12px]
-                  rounded-[6px]
-                  shadow-[0_10px_16px_4px_rgba(12,31,52,0.04)]
-                  bg-[#fcfbff]
-                "
-              >
-                <option>Сортувати</option>
-                <option>Релевантні</option>
-                <option>За популярністю</option>
-                <option>Від дешевих</option>
-                <option>Від дорогих</option>
-              </select>
-            </div>
 
             {/* 🔹 PRODUCTS */}
             <div className="grid grid-cols-3 gap-[24px] mt-[33px]">
@@ -94,9 +95,9 @@ export default function Catalog() {
             </div>
 
             {/* 🔹 PAGINATION */}
-            <div className="flex justify-center items-center gap-4 mt-[40px]">
-              {/* 🔹 PREV */}
-              <button>
+            <div className="flex justify-center items-center gap-3 mt-[40px]">
+              {/* prev */}
+              <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
                 <Image
                   src="/images/Catalog/Arrow - Right.svg"
                   alt="prev"
@@ -105,14 +106,23 @@ export default function Catalog() {
                 />
               </button>
 
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>...</span>
-              <span>105</span>
+              {/* pages */}
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i + 1)}
+                  className={`px-3 py-1 rounded ${
+                    page === i + 1 ? "bg-black text-white" : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
 
-              {/* 🔹 NEXT */}
-              <button>
+              {/* next */}
+              <button
+                onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+              >
                 <Image
                   src="/images/Catalog/Arrow - Right.svg"
                   alt="next"
@@ -122,47 +132,7 @@ export default function Catalog() {
                 />
               </button>
             </div>
-            {/* <div className="flex justify-center items-center gap-4 mt-[40px]">
-              <button>
-                <Image
-                  src="/images/Catalog/Arrow - Right.svg"
-                  alt="prev"
-                  width={24}
-                  height={24}
-                  className="rotate-180"
-                />
-              </button>
-
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>...</span>
-              <span>105</span>
-
-              <button>
-                <Image
-                  src="/images/Catalog/Arrow - Right.svg"
-                  alt="next"
-                  width={24}
-                  height={24}
-                />
-              </button>
-            </div> */}
           </div>
-        </div>
-
-        {/* 🔹 HELP BLOCK */}
-        <div className="mt-[60px] w-[640px]">
-          <h2 className="text-[24px] font-semibold">
-            Не знаєте, який ноутбук вибрати?
-          </h2>
-        </div>
-
-        {/* 🔹 RECENT */}
-        <div className="mt-[60px]">
-          <h2 className="text-[24px] font-semibold">
-            Ви нещодавно переглядали
-          </h2>
         </div>
       </div>
     </section>
