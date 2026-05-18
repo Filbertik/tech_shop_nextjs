@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import ProductCard from "@/components/ProductCard";
 import CatalogSlider from "@/components/CatalogSlider";
-import type { Product } from "@/types/product"; // ✅ ВАЖЛИВО
+import type { Product } from "@/types/product";
 
 // 🔹 categories
 const categories = [
@@ -25,7 +25,7 @@ export default function Catalog() {
 
   const LIMIT = 9;
 
-  // 🔹 pagination helper (винесений з JSX)
+  // 🔹 pagination helper
   const getPagination = (current: number, total: number) => {
     const delta = 1;
     const range: (number | string)[] = [];
@@ -67,25 +67,6 @@ export default function Catalog() {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
-  // useEffect(() => {
-  //   let data: Product[] = new Array(50).fill(null).map((_, i) => ({
-  //     id: i,
-  //     image: "Product photo.png",
-  //     title: `Ноутбук ${i + 1}`,
-  //     rating: 4,
-  //     oldPrice: 25000,
-  //     price: Math.floor(Math.random() * 50000),
-  //   }));
-
-  //   const start = (page - 1) * LIMIT;
-  //   const end = start + LIMIT;
-
-  //   setTotalPages(Math.ceil(data.length / LIMIT));
-  //   setProducts(data.slice(start, end));
-
-  //   // 🔥 UX: скрол наверх при зміні сторінки
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // }, [page]);
 
   const pages = getPagination(page, totalPages);
 
@@ -179,6 +160,19 @@ export default function Catalog() {
               </button>
             </div>
           </div>
+        </div>
+        {/* 🔹 HELP BLOCK */}
+        <div className="mt-[60px] w-[640px]">
+          <h2 className="text-[24px] font-semibold">
+            Не знаєте, який ноутбук вибрати?
+          </h2>
+        </div>
+
+        {/* 🔹 RECENT */}
+        <div className="mt-[60px]">
+          <h2 className="text-[24px] font-semibold">
+            Ви нещодавно переглядали
+          </h2>
         </div>
       </div>
     </section>
