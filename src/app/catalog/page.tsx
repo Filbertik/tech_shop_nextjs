@@ -33,11 +33,18 @@ export default function Catalog() {
           <Link href="/">Головна</Link>
 
           <Image
-            src="/images/Catalog/arrow-right.svg"
+            src="/images/Catalog/caret-right.svg"
             alt="arrow"
             width={16}
             height={16}
           />
+
+          {/* <Image
+            src="/images/Catalog/arrow-right.svg"
+            alt="arrow"
+            width={16}
+            height={16}
+          /> */}
 
           <span>Ноутбуки</span>
         </div>
@@ -88,6 +95,34 @@ export default function Catalog() {
 
             {/* 🔹 PAGINATION */}
             <div className="flex justify-center items-center gap-4 mt-[40px]">
+              {/* 🔹 PREV */}
+              <button>
+                <Image
+                  src="/images/Catalog/Arrow - Right.svg"
+                  alt="prev"
+                  width={24}
+                  height={24}
+                />
+              </button>
+
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>...</span>
+              <span>105</span>
+
+              {/* 🔹 NEXT */}
+              <button>
+                <Image
+                  src="/images/Catalog/Arrow - Right.svg"
+                  alt="next"
+                  width={24}
+                  height={24}
+                  className="rotate-180"
+                />
+              </button>
+            </div>
+            {/* <div className="flex justify-center items-center gap-4 mt-[40px]">
               <button>
                 <Image
                   src="/images/Catalog/Arrow - Right.svg"
@@ -112,7 +147,7 @@ export default function Catalog() {
                   height={24}
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 

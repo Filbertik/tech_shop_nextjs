@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site.config";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth/auth";
 import AppLoader from "@/hoc/app-loader";
-import Title from "@/components/UI/layout/title";
+// import Title from "@/components/UI/layout/title";
 import Footer from "@/components/UI/layout/footer";
 
 const geistSans = Geist({
@@ -45,7 +45,7 @@ export default async function RootLayout({
                 <div className="flex flex-col">
                   <Header />
                   <main className="flex flex-col w-full">
-                    <Title />
+                    {/* <Title /> */}
                     {children}
                   </main>
 
