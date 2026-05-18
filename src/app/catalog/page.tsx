@@ -1,4 +1,4 @@
-export default function Page() {
+export default function Catalog() {
   return (
     <div style={{ padding: "40px" }}>
       <h1>Catalog Page123</h1>
