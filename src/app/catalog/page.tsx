@@ -34,6 +34,16 @@ export default function Catalog() {
 
   // 🔹 fake API
   const fetchProducts = async (page: number) => {
+    //     const fetchProducts = async (page: number) => {
+    //   const res = await fetch(
+    //     `https://api.yoursite.com/products?page=${page}&limit=9`
+    //   );
+    //   const data = await res.json();
+
+    //   setProducts(data.items);
+    //   setTotalPages(data.totalPages);
+    // };
+
     // імітація API
     const allProducts = new Array(50).fill(null).map((_, i) => ({
       id: i,
