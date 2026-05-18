@@ -23,6 +23,13 @@ export default function Catalog() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  // 🔹 FILTERS
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
+  // 🔹 SORT
+  const [sort, setSort] = useState("cheap"); // cheap | expensive
+
   const LIMIT = 9;
 
   // 🔹 pagination helper
@@ -48,7 +55,7 @@ export default function Catalog() {
     return range;
   };
 
-  // 🔹 fake API
+  // 🔹 fake API + FILTER + SORT
   useEffect(() => {
     const data: Product[] = new Array(50).fill(null).map((_, i) => ({
       id: i,
@@ -59,16 +66,40 @@ export default function Catalog() {
       price: Math.floor(Math.random() * 50000),
     }));
 
+    // 🔹 FILTER
+    let filtered = data.filter((p) => {
+      const min = minPrice ? Number(minPrice) : 0;
+      const max = maxPrice ? Number(maxPrice) : Infinity;
+
+      return p.price >= min && p.price <= max;
+    });
+
+    // 🔹 SORT
+    if (sort === "cheap") {
+      filtered = filtered.sort((a, b) => a.price - b.price);
+    } else if (sort === "expensive") {
+      filtered = filtered.sort((a, b) => b.price - a.price);
+    }
+
+    // 🔹 PAGINATION
     const start = (page - 1) * LIMIT;
     const end = start + LIMIT;
 
-    setTotalPages(Math.ceil(data.length / LIMIT));
-    setProducts(data.slice(start, end));
+    setTotalPages(Math.ceil(filtered.length / LIMIT));
+    setProducts(filtered.slice(start, end));
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [page]);
+  }, [page, minPrice, maxPrice, sort]);
 
   const pages = getPagination(page, totalPages);
+
+  // 🔹 RESET FILTERS
+  const resetFilters = () => {
+    setMinPrice("");
+    setMaxPrice("");
+    setSort("cheap");
+    setPage(1);
+  };
 
   return (
     <section className="w-full flex justify-center">
@@ -94,7 +125,61 @@ export default function Catalog() {
           {/* 🔹 SIDEBAR */}
           <aside className="w-[302px]">
             <div className="bg-white p-4 shadow-sm rounded">
-              Фільтри (пізніше)
+              <h3 className="font-semibold mb-4">Фільтри</h3>
+
+              {/* 🔹 PRICE */}
+              <div>
+                <p className="mb-2 text-sm">Ціна</p>
+
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    placeholder="Від"
+                    value={minPrice}
+                    onChange={(e) => {
+                      setPage(1);
+                      setMinPrice(e.target.value);
+                    }}
+                    className="w-full border px-2 py-1 rounded"
+                  />
+
+                  <input
+                    type="number"
+                    placeholder="До"
+                    value={maxPrice}
+                    onChange={(e) => {
+                      setPage(1);
+                      setMaxPrice(e.target.value);
+                    }}
+                    className="w-full border px-2 py-1 rounded"
+                  />
+                </div>
+              </div>
+
+              {/* 🔹 SORT */}
+              <div className="mt-4">
+                <p className="mb-2 text-sm">Сортування</p>
+
+                <select
+                  value={sort}
+                  onChange={(e) => {
+                    setPage(1);
+                    setSort(e.target.value);
+                  }}
+                  className="w-full border px-2 py-1 rounded"
+                >
+                  <option value="cheap">Дешеві → дорогі</option>
+                  <option value="expensive">Дорогі → дешеві</option>
+                </select>
+              </div>
+
+              {/* 🔹 RESET */}
+              <button
+                onClick={resetFilters}
+                className="mt-6 w-full border py-2 rounded hover:bg-gray-100 transition"
+              >
+                Скинути фільтри
+              </button>
             </div>
           </aside>
 
@@ -111,7 +196,6 @@ export default function Catalog() {
 
             {/* 🔹 PAGINATION */}
             <div className="flex justify-center items-center gap-2 mt-[40px]">
-              {/* prev */}
               <button
                 onClick={() => setPage((p) => Math.max(p - 1, 1))}
                 disabled={page === 1}
@@ -125,7 +209,6 @@ export default function Catalog() {
                 />
               </button>
 
-              {/* pages */}
               {pages.map((p, i) =>
                 p === "..." ? (
                   <span key={i} className="px-2">
@@ -144,7 +227,6 @@ export default function Catalog() {
                 ),
               )}
 
-              {/* next */}
               <button
                 onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
                 disabled={page === totalPages}
@@ -159,20 +241,21 @@ export default function Catalog() {
                 />
               </button>
             </div>
-          </div>
-        </div>
-        {/* 🔹 HELP BLOCK */}
-        <div className="mt-[60px] w-[640px]">
-          <h2 className="text-[24px] font-semibold">
-            Не знаєте, який ноутбук вибрати?
-          </h2>
-        </div>
 
-        {/* 🔹 RECENT */}
-        <div className="mt-[60px]">
-          <h2 className="text-[24px] font-semibold">
-            Ви нещодавно переглядали
-          </h2>
+            {/* 🔹 HELP BLOCK */}
+            <div className="mt-[60px] w-[640px]">
+              <h2 className="text-[24px] font-semibold">
+                Не знаєте, який ноутбук вибрати?
+              </h2>
+            </div>
+
+            {/* 🔹 RECENT */}
+            <div className="mt-[60px]">
+              <h2 className="text-[24px] font-semibold">
+                Ви нещодавно переглядали
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
     </section>
