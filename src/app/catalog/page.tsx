@@ -8,6 +8,7 @@ import ProductCard from "@/components/ProductCard";
 import CatalogSlider from "@/components/CatalogSlider";
 import type { Product } from "@/types/product";
 import HelpBlock from "@/components/catalog/HelpBlock";
+import RecentViewed from "@/components/catalog/RecentViewed";
 
 // 🔹 categories
 const categories = [
@@ -303,9 +304,10 @@ export default function Catalog() {
 
         {/* 🔹 RECENT */}
         <div className="mt-[60px]">
-          <h2 className="text-[24px] font-semibold">
+          <RecentViewed />
+          {/* <h2 className="text-[24px] font-semibold">
             Ви нещодавно переглядали
-          </h2>
+          </h2> */}
         </div>
       </div>
     </section>
