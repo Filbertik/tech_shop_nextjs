@@ -53,47 +53,65 @@ export default function Catalog() {
 
     return range;
   };
-
   useEffect(() => {
-    const data: Product[] = new Array(50).fill(null).map((_, i) => ({
-      id: i,
-      image: "Product photo.png",
-      title: `Ноутбук ${i + 1}`,
-      rating: Math.floor(Math.random() * 5) + 1,
-      oldPrice: 25000,
-      price: Math.floor(Math.random() * 50000),
-    }));
+    const fetchProducts = async () => {
+      const res = await fetch(
+        `/api/products?min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+      );
 
-    const filteredBase = data.filter((p) => {
-      const min = minPrice ? Number(minPrice) : 0;
-      const max = maxPrice ? Number(maxPrice) : Infinity;
-      return p.price >= min && p.price <= max;
-    });
+      const data = await res.json();
 
-    const filtered = [...filteredBase];
+      setTotalPages(Math.ceil(data.length / LIMIT));
 
-    switch (sort) {
-      case "cheap":
-        filtered.sort((a, b) => a.price - b.price);
-        break;
-      case "expensive":
-        filtered.sort((a, b) => b.price - a.price);
-        break;
-      case "name":
-        filtered.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      default:
-        filtered.sort((a, b) => b.rating - a.rating);
-    }
+      const start = (page - 1) * LIMIT;
+      const end = start + LIMIT;
 
-    const start = (page - 1) * LIMIT;
-    const end = start + LIMIT;
+      setProducts(data.slice(start, end));
+    };
 
-    setTotalPages(Math.ceil(filtered.length / LIMIT));
-    setProducts(filtered.slice(start, end));
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    fetchProducts();
   }, [page, minPrice, maxPrice, sort]);
+
+  // useEffect(() => {
+  //   const data: Product[] = new Array(50).fill(null).map((_, i) => ({
+  //     id: i,
+  //     image: "Product photo.png",
+  //     title: `Ноутбук ${i + 1}`,
+  //     rating: Math.floor(Math.random() * 5) + 1,
+  //     oldPrice: 25000,
+  //     price: Math.floor(Math.random() * 50000),
+  //   }));
+
+  //   const filteredBase = data.filter((p) => {
+  //     const min = minPrice ? Number(minPrice) : 0;
+  //     const max = maxPrice ? Number(maxPrice) : Infinity;
+  //     return p.price >= min && p.price <= max;
+  //   });
+
+  //   const filtered = [...filteredBase];
+
+  //   switch (sort) {
+  //     case "cheap":
+  //       filtered.sort((a, b) => a.price - b.price);
+  //       break;
+  //     case "expensive":
+  //       filtered.sort((a, b) => b.price - a.price);
+  //       break;
+  //     case "name":
+  //       filtered.sort((a, b) => a.title.localeCompare(b.title));
+  //       break;
+  //     default:
+  //       filtered.sort((a, b) => b.rating - a.rating);
+  //   }
+
+  //   const start = (page - 1) * LIMIT;
+  //   const end = start + LIMIT;
+
+  //   setTotalPages(Math.ceil(filtered.length / LIMIT));
+  //   setProducts(filtered.slice(start, end));
+
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // }, [page, minPrice, maxPrice, sort]);
 
   const pages = getPagination(page, totalPages);
 

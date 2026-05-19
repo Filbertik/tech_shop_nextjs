@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/utils/prisma";
+// import { prisma } from "@/utils/prisma";
 
 export async function getRecipes() {
   try {
@@ -32,7 +33,7 @@ export async function createRecipe(formData: FormData) {
       .map(([key, value]) => ({
         ingredientId: value as string,
         quantity: parseFloat(
-          formData.get(`quantity_${key.split("_")[1]}`) as string
+          formData.get(`quantity_${key.split("_")[1]}`) as string,
         ),
       }));
 
@@ -81,7 +82,7 @@ export async function updateRecipe(id: string, formData: FormData) {
       .map(([key, value]) => ({
         ingredientId: value as string,
         quantity: parseFloat(
-          formData.get(`quantity_${key.split("_")[1]}`) as string
+          formData.get(`quantity_${key.split("_")[1]}`) as string,
         ),
       }));
 

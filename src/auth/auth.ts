@@ -5,6 +5,7 @@ import { ZodError } from "zod";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "@/schema/zod";
 import { getUserFromDb } from "@/utils/user";
+// import prisma from "@/utils/prisma";
 import prisma from "@/utils/prisma";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -22,9 +23,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new Error("Email та пароль обов'язкові");
           }
 
-          const { email, password } = await signInSchema.parseAsync(
-            credentials
-          );
+          const { email, password } =
+            await signInSchema.parseAsync(credentials);
 
           const user = await getUserFromDb(email);
 
@@ -34,7 +34,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           const isPasswordValid = await bcryptjs.compare(
             password,
-            user.password
+            user.password,
           );
 
           if (!isPasswordValid) {

@@ -1,7 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -112,4 +110,48 @@ ingredientId String
 quantity     Float
 
 @@map("recipe_ingredient")
+}
+
+
+model Product {
+  id        Int     @id @default(autoincrement())
+  title     String
+  brand     String
+  model     String
+
+  price     Int
+  oldPrice  Int?
+  rating    Int     @default(0)
+  image     String
+
+  availability Boolean @default(true)
+  discount     Boolean @default(false)
+
+  type         String
+  screenSize   String
+  resolution   String
+  screenType   String
+  refreshRate  Int
+
+  cpu          String
+  cores        Int
+
+  gpuBrand     String
+  gpuType      String
+  gpuModel     String
+  vram         Int
+
+  ram          Int
+  ramType      String
+
+  ssd          Int
+  os           String
+
+  coating      String
+  matrixType   String
+  batteryType  String
+
+  features     String
+
+  createdAt DateTime @default(now())
 }
