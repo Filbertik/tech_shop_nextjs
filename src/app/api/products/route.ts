@@ -17,7 +17,7 @@ export async function GET(req: Request) {
     },
   });
 
-  let sorted = [...products];
+  const sorted = [...products];
 
   switch (sort) {
     case "cheap":
