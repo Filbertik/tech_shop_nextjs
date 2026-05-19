@@ -167,42 +167,6 @@ export default function Catalog() {
               pages={pages}
               setPage={setPage}
             />
-            {/* <div className="flex justify-center items-center gap-2 mt-[40px]">
-              <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
-                <Image
-                  src="/images/Catalog/Arrow - Right.svg"
-                  alt=""
-                  width={24}
-                  height={24}
-                />
-              </button>
-
-              {pages.map((p, i) =>
-                p === "..." ? (
-                  <span key={i}>...</span>
-                ) : (
-                  <button
-                    key={i}
-                    onClick={() => setPage(Number(p))}
-                    className={page === p ? "bg-black text-white px-3" : "px-3"}
-                  >
-                    {p}
-                  </button>
-                ),
-              )}
-
-              <button
-                onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-              >
-                <Image
-                  src="/images/Catalog/Arrow - Right.svg"
-                  alt=""
-                  width={24}
-                  height={24}
-                  className="rotate-180"
-                />
-              </button>
-            </div> */}
           </div>
         </div>
         {/* 🔹 HELP BLOCK */}
