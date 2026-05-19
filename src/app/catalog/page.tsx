@@ -292,6 +292,19 @@ export default function Catalog() {
             </div>
           </div>
         </div>
+        {/* 🔹 HELP BLOCK */}
+        <div className="mt-[60px] w-[640px]">
+          <h2 className="text-[24px] font-semibold">
+            Не знаєте, який ноутбук вибрати?
+          </h2>
+        </div>
+
+        {/* 🔹 RECENT */}
+        <div className="mt-[60px]">
+          <h2 className="text-[24px] font-semibold">
+            Ви нещодавно переглядали
+          </h2>
+        </div>
       </div>
     </section>
   );
