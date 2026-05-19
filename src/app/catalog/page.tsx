@@ -10,6 +10,7 @@ import type { Product } from "@/types/product";
 import HelpBlock from "@/components/catalog/HelpBlock";
 import RecentViewed from "@/components/catalog/RecentViewed";
 import Sidebar from "@/components/catalog/Sidebar";
+import SortBar from "@/components/catalog/SortBar";
 
 // 🔹 categories
 const categories = [
@@ -20,36 +21,6 @@ const categories = [
   { image: "Slide5.png", title: "Бюджетні рішення" },
   { image: "Slide6.png", title: "З сенсорним екраном" },
 ];
-
-// // 🔹 FILTER STRUCTURE
-// const filterSections = [
-//   "Наявність",
-//   "Знижка",
-//   "Бренд",
-//   "Тип",
-//   "Діагональ екрану",
-//   "Роздільна здатність екрану",
-//   "Тип екрану",
-//   "Частота оновлення екрану",
-//   "Особливості дисплея",
-//   "Процесор",
-//   "Кількість ядер",
-//   "Виробник відеокарти",
-//   "Тип відеокарти",
-//   "Графічний адаптер",
-//   "Об'єм відеопам'яті",
-//   "Оперативна пам'ять",
-//   "Характеристики оперативної пам'яті",
-//   "Об'єм SSD",
-//   "Операційна система",
-//   "Тип покриття",
-//   "Тип матриці",
-//   "Тип акумулятору",
-//   "Особливості",
-// ];
-
-// // 🔹 FAKE OPTIONS
-// const fakeOptions = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
 export default function Catalog() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -168,25 +139,19 @@ export default function Catalog() {
             toggleSection={toggleSection}
             resetFilters={resetFilters}
           />
-          {/* <Sidebar
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            setMinPrice={setMinPrice}
-            setMaxPrice={setMaxPrice}
-            setPage={setPage}
-            filterSections={filterSections}
-            fakeOptions={fakeOptions}
-            openSections={openSections}
-            toggleSection={toggleSection}
-            resetFilters={resetFilters}
-          /> */}
 
           {/* 🔹 RIGHT */}
           <div className="w-[954px]">
             <CatalogSlider categories={categories} />
 
             {/* SORT */}
-            <div className="flex justify-between items-center mt-[24px]">
+            <SortBar
+              total={products.length}
+              sort={sort}
+              setSort={setSort}
+              setPage={setPage}
+            />
+            {/* <div className="flex justify-between items-center mt-[24px]">
               <p className="text-sm text-gray-500">
                 Знайдено товарів: {products.length}
               </p>
@@ -204,7 +169,7 @@ export default function Catalog() {
                 <option value="expensive">Дорогі</option>
                 <option value="name">За ім’ям</option>
               </select>
-            </div>
+            </div> */}
 
             {/* PRODUCTS */}
             <div className="grid grid-cols-3 gap-[24px] mt-[24px]">
@@ -255,17 +220,11 @@ export default function Catalog() {
         {/* 🔹 HELP BLOCK */}
         <div className="mt-[60px] w-[640px]">
           <HelpBlock />
-          {/* <h2 className="text-[24px] font-semibold">
-            Не знаєте, який ноутбук вибрати?
-          </h2> */}
         </div>
 
         {/* 🔹 RECENT */}
         <div className="mt-[60px]">
           <RecentViewed />
-          {/* <h2 className="text-[24px] font-semibold">
-            Ви нещодавно переглядали
-          </h2> */}
         </div>
       </div>
     </section>
