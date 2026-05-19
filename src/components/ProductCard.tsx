@@ -21,7 +21,27 @@ export default function ProductCard({ product }: Props) {
       <h3 className="mt-3 text-sm">{product.title}</h3>
 
       {/* рейтинг (поки статичний) */}
-      <p className="text-yellow-500 text-sm">★★★★★</p>
+      {/* <p className="text-yellow-500 text-sm">★★★★★</p> */}
+      {/* ⭐ рейтинг */}
+      <div className="flex items-center gap-2 h-[20px]">
+        <div className="flex gap-1">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Image
+              key={star}
+              src={
+                star <= product.rating
+                  ? "/images/Bestsellers/Star Icon f.svg"
+                  : "/images/Bestsellers/Star Icon.svg"
+              }
+              alt="star"
+              width={16}
+              height={16}
+            />
+          ))}
+        </div>
+
+        <span className="text-sm text-gray-600">{product.rating}</span>
+      </div>
 
       {/* ціни */}
       <div className="mt-2">
