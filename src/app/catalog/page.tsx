@@ -21,35 +21,35 @@ const categories = [
   { image: "Slide6.png", title: "З сенсорним екраном" },
 ];
 
-// 🔹 FILTER STRUCTURE
-const filterSections = [
-  "Наявність",
-  "Знижка",
-  "Бренд",
-  "Тип",
-  "Діагональ екрану",
-  "Роздільна здатність екрану",
-  "Тип екрану",
-  "Частота оновлення екрану",
-  "Особливості дисплея",
-  "Процесор",
-  "Кількість ядер",
-  "Виробник відеокарти",
-  "Тип відеокарти",
-  "Графічний адаптер",
-  "Об'єм відеопам'яті",
-  "Оперативна пам'ять",
-  "Характеристики оперативної пам'яті",
-  "Об'єм SSD",
-  "Операційна система",
-  "Тип покриття",
-  "Тип матриці",
-  "Тип акумулятору",
-  "Особливості",
-];
+// // 🔹 FILTER STRUCTURE
+// const filterSections = [
+//   "Наявність",
+//   "Знижка",
+//   "Бренд",
+//   "Тип",
+//   "Діагональ екрану",
+//   "Роздільна здатність екрану",
+//   "Тип екрану",
+//   "Частота оновлення екрану",
+//   "Особливості дисплея",
+//   "Процесор",
+//   "Кількість ядер",
+//   "Виробник відеокарти",
+//   "Тип відеокарти",
+//   "Графічний адаптер",
+//   "Об'єм відеопам'яті",
+//   "Оперативна пам'ять",
+//   "Характеристики оперативної пам'яті",
+//   "Об'єм SSD",
+//   "Операційна система",
+//   "Тип покриття",
+//   "Тип матриці",
+//   "Тип акумулятору",
+//   "Особливості",
+// ];
 
-// 🔹 FAKE OPTIONS
-const fakeOptions = ["Option 1", "Option 2", "Option 3", "Option 4"];
+// // 🔹 FAKE OPTIONS
+// const fakeOptions = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
 export default function Catalog() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -164,12 +164,22 @@ export default function Catalog() {
             setMinPrice={setMinPrice}
             setMaxPrice={setMaxPrice}
             setPage={setPage}
+            openSections={openSections}
+            toggleSection={toggleSection}
+            resetFilters={resetFilters}
+          />
+          {/* <Sidebar
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            setMinPrice={setMinPrice}
+            setMaxPrice={setMaxPrice}
+            setPage={setPage}
             filterSections={filterSections}
             fakeOptions={fakeOptions}
             openSections={openSections}
             toggleSection={toggleSection}
             resetFilters={resetFilters}
-          />
+          /> */}
 
           {/* 🔹 RIGHT */}
           <div className="w-[954px]">
