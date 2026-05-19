@@ -7,6 +7,7 @@ import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
 import CatalogSlider from "@/components/CatalogSlider";
 import type { Product } from "@/types/product";
+import HelpBlock from "@/components/catalog/HelpBlock";
 
 // 🔹 categories
 const categories = [
@@ -294,9 +295,10 @@ export default function Catalog() {
         </div>
         {/* 🔹 HELP BLOCK */}
         <div className="mt-[60px] w-[640px]">
-          <h2 className="text-[24px] font-semibold">
+          <HelpBlock />
+          {/* <h2 className="text-[24px] font-semibold">
             Не знаєте, який ноутбук вибрати?
-          </h2>
+          </h2> */}
         </div>
 
         {/* 🔹 RECENT */}
