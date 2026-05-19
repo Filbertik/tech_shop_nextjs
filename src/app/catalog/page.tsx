@@ -11,6 +11,7 @@ import HelpBlock from "@/components/catalog/HelpBlock";
 import RecentViewed from "@/components/catalog/RecentViewed";
 import Sidebar from "@/components/catalog/Sidebar";
 import SortBar from "@/components/catalog/SortBar";
+import Pagination from "@/components/catalog/Pagination";
 
 // 🔹 categories
 const categories = [
@@ -151,25 +152,6 @@ export default function Catalog() {
               setSort={setSort}
               setPage={setPage}
             />
-            {/* <div className="flex justify-between items-center mt-[24px]">
-              <p className="text-sm text-gray-500">
-                Знайдено товарів: {products.length}
-              </p>
-
-              <select
-                value={sort}
-                onChange={(e) => {
-                  setPage(1);
-                  setSort(e.target.value);
-                }}
-                className="border px-2 py-1 rounded"
-              >
-                <option value="popular">Популярні</option>
-                <option value="cheap">Дешеві</option>
-                <option value="expensive">Дорогі</option>
-                <option value="name">За ім’ям</option>
-              </select>
-            </div> */}
 
             {/* PRODUCTS */}
             <div className="grid grid-cols-3 gap-[24px] mt-[24px]">
@@ -179,7 +161,13 @@ export default function Catalog() {
             </div>
 
             {/* PAGINATION */}
-            <div className="flex justify-center items-center gap-2 mt-[40px]">
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              pages={pages}
+              setPage={setPage}
+            />
+            {/* <div className="flex justify-center items-center gap-2 mt-[40px]">
               <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
                 <Image
                   src="/images/Catalog/Arrow - Right.svg"
@@ -214,7 +202,7 @@ export default function Catalog() {
                   className="rotate-180"
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* 🔹 HELP BLOCK */}
