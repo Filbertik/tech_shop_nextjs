@@ -18,12 +18,20 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* IMAGE */}
       <div className="relative w-full h-[200px]">
         <Image
-          src={`/images/${product.image}`}
+          src={product.image} // ✅ ВИПРАВЛЕНО
           alt={product.title}
           fill
           className="object-contain"
         />
       </div>
+      {/* <div className="relative w-full h-[200px]">
+        <Image
+          src={`/images/${product.image}`}
+          alt={product.title}
+          fill
+          className="object-contain"
+        />
+      </div> */}
 
       {/* TITLE */}
       <h3 className="mt-3 text-sm font-medium line-clamp-2">{product.title}</h3>
@@ -32,9 +40,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="mt-2 flex items-center gap-2">
         <span className="text-[16px] font-bold">{product.price} ₴</span>
 
-        <span className="text-sm text-gray-400 line-through">
+        {product.oldPrice && (
+          <span className="text-sm text-gray-400 line-through">
+            {product.oldPrice} ₴
+          </span>
+        )}
+
+        {/* <span className="text-sm text-gray-400 line-through">
           {product.oldPrice} ₴
-        </span>
+        </span> */}
       </div>
 
       {/* RATING (якщо є) */}
