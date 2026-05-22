@@ -1,4 +1,11 @@
 import RecentViewed from "@/components/catalog/RecentViewed";
+import Characteristics from "@/components/product/Characteristics";
+import Description from "@/components/product/Description";
+import Features from "@/components/product/Features";
+import ImageBlock from "@/components/product/ImageBlock";
+import RelatedProducts from "@/components/product/RelatedProducts";
+import Reviews from "@/components/product/Reviews";
+import TitleBlock from "@/components/product/TitleBlock";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -50,154 +57,30 @@ export default function Page() {
         {/* LEFT COLUMN */}
         <div className="w-[600px]">
           {/* IMAGE BLOCK */}
-          <div className="flex gap-[20px]">
-            {/* THUMBNAILS */}
-            <div className="w-[80px] h-[472px] flex flex-col items-center justify-between">
-              <Image
-                src="/images/ProductID/uparrow.svg"
-                alt="up"
-                width={24}
-                height={24}
-              />
-
-              <div className="flex flex-col gap-[8px] overflow-hidden">
-                {product.images.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={`/images/ProductID/${img}`}
-                    alt="thumb"
-                    width={80}
-                    height={60}
-                    className="cursor-pointer border rounded"
-                  />
-                ))}
-              </div>
-
-              <Image
-                src="/images/ProductID/downarrow.svg"
-                alt="down"
-                width={24}
-                height={24}
-              />
-            </div>
-
-            {/* MAIN IMAGE */}
-            <div className="relative w-[500px] h-[500px] border rounded-[4px]">
-              <Image
-                src={`/images/ProductID/${product.images[0]}`}
-                alt="main"
-                fill
-                className="object-contain"
-              />
-
-              {/* TOP RIGHT ICONS */}
-              <div className="absolute top-2 right-2 flex gap-2">
-                <Image
-                  src="/images/ProductID/Heart.svg"
-                  alt="heart"
-                  width={24}
-                  height={24}
-                />
-                <Image
-                  src="/images/ProductID/Scales.svg"
-                  alt="compare"
-                  width={24}
-                  height={24}
-                />
-              </div>
-
-              {/* BOTTOM RIGHT ARROWS */}
-              <div className="absolute bottom-2 right-2 flex gap-2">
-                <Image
-                  src="/images/ProductID/leftarrow.svg"
-                  alt="left"
-                  width={24}
-                  height={24}
-                />
-                <Image
-                  src="/images/ProductID/rightarrow.svg"
-                  alt="right"
-                  width={24}
-                  height={24}
-                />
-              </div>
-            </div>
-          </div>
+          <ImageBlock images={product.images} />
 
           {/* FEATURES */}
-          <div className="w-[568px] h-[106px] flex justify-between mt-[16px]">
-            {[
-              {
-                icon: "delivery-truck-02.svg",
-                text: "Відправка на наступний день",
-              },
-              {
-                icon: "customer-support.svg",
-                text: "Консультація з експертом",
-              },
-              {
-                icon: "iconofreturn.svg",
-                text: "Повернення / обмін протягом 14 днів",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="w-[184px] h-[106px] border rounded flex flex-col items-center justify-center text-center text-[14px]"
-              >
-                <Image
-                  src={`/images/ProductID/${item.icon}`}
-                  alt="icon"
-                  width={32}
-                  height={32}
-                />
-                <span>{item.text}</span>
-              </div>
-            ))}
-          </div>
+          <Features />
 
           {/* CHARACTERISTICS */}
-          <div className="w-[301px] h-[367px] mt-[20px]">
-            <h3 className="text-lg font-semibold mb-2">Характеристики</h3>
-          </div>
+          <Characteristics />
         </div>
 
         {/* RIGHT COLUMN */}
         <div className="flex flex-col gap-[20px]">
           {/* TITLE BLOCK */}
-          <div className="w-[656px] h-[469px]">
-            <h1 className="text-[24px] font-semibold">{product.title}</h1>
-          </div>
+          <TitleBlock title={product.title} />
 
           {/* RELATED PRODUCTS */}
-          <div className="w-[641px] h-[503px]">
-            <h3 className="text-lg font-semibold mb-[16px]">
-              З цим товаром часто купують
-            </h3>
-
-            <div className="grid grid-cols-2 gap-x-[40px] gap-y-[20px]">
-              {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="w-[300px] h-[217px] border rounded p-[20px] bg-white"
-                >
-                  текст
-                </div>
-              ))}
-            </div>
-          </div>
+          <RelatedProducts />
         </div>
       </div>
 
       {/* DESCRIPTION */}
-      <div className="w-[703px] h-[435px] mt-[40px]">
-        <h3 className="text-lg font-semibold mb-2">Опис товару</h3>
-        <p>Опис {product.title}</p>
-      </div>
+      <Description title={product.title} />
 
       {/* REVIEWS */}
-      <div className="w-[650px] h-[522px] mt-[20px]">
-        <h3 className="text-lg font-semibold mb-2">Відгуки</h3>
-      </div>
+      <Reviews />
 
       {/* RECENT VIEWED */}
       <div className="mt-[60px]">
