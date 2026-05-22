@@ -1,53 +1,88 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 interface Props {
   images: string[];
 }
 
 export default function ImageBlock({ images }: Props) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+
+  const visibleCount = 5;
+
+  const visibleImages = images.slice(startIndex, startIndex + visibleCount);
+
+  const handleUp = () => {
+    if (startIndex > 0) {
+      setStartIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleDown = () => {
+    if (startIndex + visibleCount < images.length) {
+      setStartIndex((prev) => prev + 1);
+    }
+  };
+
   return (
     <div className="flex gap-[20px]">
       {/* THUMBNAILS */}
       <div className="w-[80px] h-[472px] flex flex-col items-center justify-between">
-        <Image
-          src="/images/ProductID/uparrow.svg"
-          alt="up"
-          width={24}
-          height={24}
-        />
+        {/* UP */}
+        <button onClick={handleUp}>
+          <Image
+            src="/images/ProductID/uparrow.svg"
+            alt="up"
+            width={24}
+            height={24}
+          />
+        </button>
 
-        <div className="flex flex-col gap-[8px] overflow-hidden">
-          {images.map((img, i) => (
-            <Image
-              key={i}
-              src={`/images/ProductID/${img}`}
-              alt="thumb"
-              width={80}
-              height={60}
-              className="cursor-pointer border rounded"
-            />
-          ))}
+        {/* LIST */}
+        <div className="flex flex-col gap-[8px]">
+          {visibleImages.map((img, i) => {
+            const realIndex = startIndex + i;
+
+            return (
+              <Image
+                key={realIndex}
+                src={`/images/ProductID/${img}`}
+                alt="thumb"
+                width={80}
+                height={60}
+                onClick={() => setActiveIndex(realIndex)}
+                className={`cursor-pointer border rounded 
+                  ${activeIndex === realIndex ? "border-black" : "border-gray-200"}
+                `}
+              />
+            );
+          })}
         </div>
 
-        <Image
-          src="/images/ProductID/downarrow.svg"
-          alt="down"
-          width={24}
-          height={24}
-        />
+        {/* DOWN */}
+        <button onClick={handleDown}>
+          <Image
+            src="/images/ProductID/downarrow.svg"
+            alt="down"
+            width={24}
+            height={24}
+          />
+        </button>
       </div>
 
       {/* MAIN IMAGE */}
       <div className="relative w-[500px] h-[500px] border rounded-[4px]">
         <Image
-          src={`/images/ProductID/${images[0]}`}
+          src={`/images/ProductID/${images[activeIndex]}`}
           alt="main"
           fill
           className="object-contain"
         />
 
+        {/* TOP RIGHT */}
         <div className="absolute top-2 right-2 flex gap-2">
           <Image
             src="/images/ProductID/Heart.svg"
@@ -63,21 +98,121 @@ export default function ImageBlock({ images }: Props) {
           />
         </div>
 
+        {/* LEFT RIGHT NAV (далі можна оживити) */}
         <div className="absolute bottom-2 right-2 flex gap-2">
-          <Image
-            src="/images/ProductID/leftarrow.svg"
-            alt="left"
-            width={24}
-            height={24}
-          />
-          <Image
-            src="/images/ProductID/rightarrow.svg"
-            alt="right"
-            width={24}
-            height={24}
-          />
+          <button
+            onClick={() =>
+              setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev))
+            }
+          >
+            <Image
+              src="/images/ProductID/leftarrow.svg"
+              alt="left"
+              width={24}
+              height={24}
+            />
+          </button>
+
+          <button
+            onClick={() =>
+              setActiveIndex((prev) =>
+                prev < images.length - 1 ? prev + 1 : prev,
+              )
+            }
+          >
+            <Image
+              src="/images/ProductID/rightarrow.svg"
+              alt="right"
+              width={24}
+              height={24}
+            />
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
+// "use client";
+
+// import Image from "next/image";
+
+// interface Props {
+//   images: string[];
+// }
+
+// export default function ImageBlock({ images }: Props) {
+//   return (
+//     <div className="flex gap-[20px]">
+//       {/* THUMBNAILS */}
+//       <div className="w-[80px] h-[472px] flex flex-col items-center justify-between">
+//         <Image
+//           src="/images/ProductID/uparrow.svg"
+//           alt="up"
+//           width={24}
+//           height={24}
+//         />
+
+//         <div className="flex flex-col gap-[8px] overflow-hidden">
+//           {images.map((img, i) => (
+//             <Image
+//               key={i}
+//               src={`/images/ProductID/${img}`}
+//               alt="thumb"
+//               width={80}
+//               height={60}
+//               className="cursor-pointer border rounded"
+//             />
+//           ))}
+//         </div>
+
+//         <Image
+//           src="/images/ProductID/downarrow.svg"
+//           alt="down"
+//           width={24}
+//           height={24}
+//         />
+//       </div>
+
+//       {/* MAIN IMAGE */}
+//       <div className="relative w-[500px] h-[500px] border rounded-[4px]">
+//         <Image
+//           src={`/images/ProductID/${images[0]}`}
+//           alt="main"
+//           fill
+//           className="object-contain"
+//         />
+
+//         <div className="absolute top-2 right-2 flex gap-2">
+//           <Image
+//             src="/images/ProductID/Heart.svg"
+//             alt="heart"
+//             width={24}
+//             height={24}
+//           />
+//           <Image
+//             src="/images/ProductID/Scales.svg"
+//             alt="compare"
+//             width={24}
+//             height={24}
+//           />
+//         </div>
+
+//         <div className="absolute bottom-2 right-2 flex gap-2">
+//           <Image
+//             src="/images/ProductID/leftarrow.svg"
+//             alt="left"
+//             width={24}
+//             height={24}
+//           />
+//           <Image
+//             src="/images/ProductID/rightarrow.svg"
+//             alt="right"
+//             width={24}
+//             height={24}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
