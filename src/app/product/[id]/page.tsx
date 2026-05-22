@@ -1,3 +1,4 @@
+import RecentViewed from "@/components/catalog/RecentViewed";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -199,10 +200,13 @@ export default function Page() {
       </div>
 
       {/* RECENT VIEWED */}
-      <div className="mt-[40px]">
-        {/* 🔜 підключиш свій компонент */}
-        {/* <RecentViewed /> */}
+      <div className="mt-[60px]">
+        <RecentViewed />
       </div>
+      {/* <div className="mt-[40px]"> */}
+      {/* мій компонент з каталогу */}
+      {/* <RecentViewed /> */}
+      {/* </div> */}
     </div>
   );
 }
