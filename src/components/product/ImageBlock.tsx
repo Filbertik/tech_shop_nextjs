@@ -132,29 +132,29 @@ export default function ImageBlock({ images }: Props) {
         />
 
         {/* TOP RIGHT ICONS */}
-        <div className="absolute top-2 right-2 flex gap-2">
+        <div className="absolute top-2 right-2 flex gap-[14px]">
           <Image
             src="/images/ProductID/Heart.svg"
             alt="heart"
-            width={24}
-            height={24}
+            width={37}
+            height={34}
           />
           <Image
             src="/images/ProductID/Scales.svg"
             alt="compare"
-            width={24}
-            height={24}
+            width={37}
+            height={34}
           />
         </div>
 
         {/* LEFT RIGHT NAV */}
-        <div className="absolute bottom-2 right-2 flex gap-2">
+        <div className="absolute bottom-2 right-2 flex gap-[12px]">
           <button onClick={() => changeImage(activeIndex - 1)}>
             <Image
               src="/images/ProductID/leftarrow.svg"
               alt="left"
-              width={24}
-              height={24}
+              width={50}
+              height={50}
             />
           </button>
 
@@ -162,8 +162,8 @@ export default function ImageBlock({ images }: Props) {
             <Image
               src="/images/ProductID/rightarrow.svg"
               alt="right"
-              width={24}
-              height={24}
+              width={50}
+              height={50}
             />
           </button>
         </div>
