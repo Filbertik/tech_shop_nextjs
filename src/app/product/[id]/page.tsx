@@ -9,8 +9,19 @@ import TitleBlock from "@/components/product/TitleBlock";
 import Image from "next/image";
 import Link from "next/link";
 
-// 🔜 тимчасові дані (потім заміниш на fetch з БД)
-const product = {
+type Product = {
+  title: string;
+  category: string;
+  images: string[];
+
+  rating: number;
+  price: number;
+  oldPrice?: number;
+  code: string;
+};
+
+// 🔜 mock (потім заміниш на Prisma)
+const product: Product = {
   title: "Ноутбук Asus Vivobook 15 X1504VA-BQ500 (90NB10J2-M00PJ0) Cool Silver",
   category: "Ноутбуки",
   images: [
@@ -24,6 +35,11 @@ const product = {
     "Frame 759.png",
     "Frame 760.png",
   ],
+
+  rating: 4,
+  price: 32000,
+  oldPrice: 35000,
+  code: "ASUS-90NB10J2",
 };
 
 export default function Page() {
@@ -56,22 +72,21 @@ export default function Page() {
       <div className="w-[1280px] flex gap-[24px]">
         {/* LEFT COLUMN */}
         <div className="w-[600px]">
-          {/* IMAGE BLOCK */}
           <ImageBlock images={product.images} />
-
-          {/* FEATURES */}
           <Features />
-
-          {/* CHARACTERISTICS */}
           <Characteristics />
         </div>
 
         {/* RIGHT COLUMN */}
         <div className="flex flex-col gap-[20px]">
-          {/* TITLE BLOCK */}
-          <TitleBlock title={product.title} />
+          <TitleBlock
+            title={product.title}
+            rating={product.rating}
+            price={product.price}
+            oldPrice={product.oldPrice}
+            productCode={product.code}
+          />
 
-          {/* RELATED PRODUCTS */}
           <RelatedProducts />
         </div>
       </div>
@@ -86,19 +101,6 @@ export default function Page() {
       <div className="mt-[60px]">
         <RecentViewed />
       </div>
-      {/* <div className="mt-[40px]"> */}
-      {/* мій компонент з каталогу */}
-      {/* <RecentViewed /> */}
-      {/* </div> */}
     </div>
   );
 }
-
-// export default function Page() {
-//   return (
-//     <div style={{ padding: "40px" }}>
-//       <h1>Product Page</h1>
-//       <p>`Це заготовка сторінки Product Page..`</p>
-//     </div>
-//   );
-// }
