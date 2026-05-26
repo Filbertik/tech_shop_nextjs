@@ -71,14 +71,14 @@ export default function Page() {
       {/* MAIN CONTAINER */}
       <div className="w-[1280px] flex gap-[24px]">
         {/* LEFT COLUMN */}
-        <div className="w-[600px]">
+        <div className="w-[600px] gap-[60px]">
           <ImageBlock images={product.images} />
           <Features />
           <Characteristics />
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="flex flex-col gap-[20px]">
+        <div className="flex flex-col gap-[74px]">
           <TitleBlock
             title={product.title}
             rating={product.rating}
