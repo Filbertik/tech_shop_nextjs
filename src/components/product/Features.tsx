@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function Features() {
@@ -17,19 +19,22 @@ export default function Features() {
   ];
 
   return (
-    <div className="w-[568px] h-[106px] flex justify-between mt-[16px]">
+    <div className="w-[568px] flex gap-[8px] mt-[16px]">
       {items.map((item, i) => (
         <div
           key={i}
-          className="w-[184px] h-[106px] border rounded flex flex-col items-center justify-center text-center text-[14px]"
+          className="w-[184px] h-[106px] border rounded flex flex-col items-center justify-center text-center"
         >
           <Image
             src={`/images/ProductID/${item.icon}`}
             alt="icon"
-            width={32}
-            height={32}
+            width={48}
+            height={48}
           />
-          <span>{item.text}</span>
+
+          <span className="mt-[10px] font-bold text-[16px] leading-[150%] text-center text-black">
+            {item.text}
+          </span>
         </div>
       ))}
     </div>
