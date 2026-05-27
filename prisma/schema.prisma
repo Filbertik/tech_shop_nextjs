@@ -42,6 +42,7 @@ model User {
   lastName    String
   email       String   @unique
   phone       String?
+  // password    String
   address     String?
   preferences Json?
   createdAt   DateTime @default(now())
