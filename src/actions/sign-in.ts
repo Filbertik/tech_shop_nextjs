@@ -12,7 +12,7 @@ export async function signInWithCredentials(email: string, password: string) {
 
     return;
   } catch (error) {
-    console.error("Помилка авторизації:", error);
+    console.error("Помилка _ авторизації:", error);
     throw error;
   }
 }
