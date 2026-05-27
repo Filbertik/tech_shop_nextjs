@@ -29,8 +29,13 @@ export async function registerUser(formData: IFormData) {
     const user = await prisma.user.create({
       data: {
         email: email,
-        // password: pwHash,
+        firstName: "User",
+        lastName: "User",
       },
+      // data: {
+      //   email: email,
+      //   // password: pwHash,
+      // },
     });
 
     return user;
