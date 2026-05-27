@@ -27,16 +27,25 @@ export async function registerUser(formData: IFormData) {
     const pwHash = await saltAndHashPassword(password);
 
     const user = await prisma.user.create({
-      // data: {
-      //   email: email,
-      //   firstName: "User",
-      //   lastName: "User",
-      // },
       data: {
-        email: email,
+        email,
         password: pwHash,
+        firstName: "Temp",
+        lastName: "User",
       },
     });
+
+    // const user = await prisma.user.create({
+    //   // data: {
+    //   //   email: email,
+    //   //   firstName: "User",
+    //   //   lastName: "User",
+    //   // },
+    //   data: {
+    //     email: email,
+    //     password: pwHash,
+    //   },
+    // });
 
     return user;
   } catch (error) {
