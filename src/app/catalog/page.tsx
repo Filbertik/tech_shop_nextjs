@@ -40,7 +40,13 @@ export default function Catalog() {
     const fetchProducts = async () => {
       const res = await fetch(
         `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+        {
+          cache: "no-store",
+        },
       );
+      // const res = await fetch(
+      //   `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+      // );
 
       const data = await res.json();
 
