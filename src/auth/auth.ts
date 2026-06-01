@@ -28,13 +28,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           const user = await getUserFromDb(email);
 
-          if (!user) {
-            throw new Error("Користувача не знайдено");
+          if (!user || !user.password) {
+            throw new Error("Невірно введені дані");
           }
-
-          // if (!user || !user.password) {
-          //   throw new Error("Невірно введені дані");
-          // }
 
           const isPasswordValid = await bcryptjs.compare(
             password,
