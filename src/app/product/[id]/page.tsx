@@ -60,7 +60,9 @@ export default async function Page({ params }: { params: { id: string } }) {
       {/* MAIN */}
       <div className="w-[1280px] flex gap-[24px]">
         <div className="w-[600px] gap-[60px]">
-          <ImageBlock images={(product as any).images ?? []} />
+          <ImageBlock images={product.images ?? []} />
+          {/* <ImageBlock images={(product as any).images ?? []} /> */}
+          {/* <ImageBlock images={[]} /> */}
           <Features />
           <Characteristics />
         </div>
