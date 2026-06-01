@@ -38,24 +38,48 @@ export default function Catalog() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch(
-        `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
-        {
-          cache: "no-store",
-        },
-      );
-      // const res = await fetch(
-      //   `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
-      // );
+      try {
+        const res = await fetch(
+          `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+          { cache: "no-store" },
+        );
 
-      const data = await res.json();
+        const data = await res.json();
 
-      setProducts(data.products);
-      setTotalPages(Math.ceil(data.total / LIMIT));
+        console.log("API RESPONSE:", data);
+
+        setProducts(data?.products ?? []);
+        setTotalPages(Math.ceil((data?.total ?? 0) / LIMIT));
+      } catch (err) {
+        console.error("FETCH ERROR:", err);
+        setProducts([]);
+        setTotalPages(1);
+      }
     };
 
     fetchProducts();
   }, [page, minPrice, maxPrice, sort]);
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const res = await fetch(
+  //       `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+  //       {
+  //         cache: "no-store",
+  //       },
+  //     );
+  //     // const res = await fetch(
+  //     //   `/api/products?page=${page}&limit=${LIMIT}&min=${minPrice}&max=${maxPrice}&sort=${sort}`,
+  //     // );
+
+  //     const data = await res.json();
+
+  //     setProducts(data.products);
+  //     setTotalPages(Math.ceil(data.total / LIMIT));
+  //   };
+
+  //   fetchProducts();
+  // }, [page, minPrice, maxPrice, sort]);
 
   const getPagination = (current: number, total: number) => {
     const delta = 1;
