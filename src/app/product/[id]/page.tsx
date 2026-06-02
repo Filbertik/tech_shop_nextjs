@@ -58,7 +58,8 @@ export default async function Page(props: any) {
           <ImageBlock images={product.images ?? []} />
 
           <Features />
-          <Characteristics />
+          {/* <Characteristics /> */}
+          <Characteristics characteristics={product.characteristics} />
         </div>
 
         <div className="flex flex-col gap-[74px]">
