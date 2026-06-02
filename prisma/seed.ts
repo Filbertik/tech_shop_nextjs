@@ -201,7 +201,34 @@ async function main() {
           color: "Black",
           ports: "USB-C, HDMI",
           warranty: "12 months",
+
+          // 🔥 ДОБАВЛЯЄМО НОВІ (щоб було 22+)
+          brand: random(brands),
+          model: `Model-${i}`,
+          screenSize: ['14"', '15.6"', '16"'][Math.floor(Math.random() * 3)],
+          resolution: "1920x1080",
+          refreshRate: "144Hz",
+          os: "Windows 11",
+          keyboard: "Backlit RGB",
+          touchpad: "Precision touchpad",
+          audio: "Dolby Audio",
+          camera: "HD 720p",
+          network: "WiFi 6",
+          bluetooth: "5.2",
         },
+
+        // characteristics: {
+        //   cpu: random(cpus),
+        //   gpu: random(gpus),
+        //   ram: "16GB",
+        //   storage: "512GB SSD",
+        //   display: "IPS 144Hz",
+        //   battery: "60Wh",
+        //   weight: "2.1kg",
+        //   color: "Black",
+        //   ports: "USB-C, HDMI",
+        //   warranty: "12 months",
+        // },
       },
     });
 
