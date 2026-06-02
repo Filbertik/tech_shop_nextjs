@@ -24,10 +24,10 @@ export default function ImageBlock({ images }: Props) {
     return isExternal(url) ? url : `/images/ProductID/${url}`;
   };
 
-  const changeImage = (newIndex: number) => {
-    if (newIndex < 0 || newIndex >= imageList.length) return;
-    setActiveIndex(newIndex);
-  };
+  // const changeImage = (newIndex: number) => {
+  //   if (newIndex < 0 || newIndex >= imageList.length) return;
+  //   setActiveIndex(newIndex);
+  // };
 
   const handleUp = () => {
     listRef.current?.scrollBy({ top: -80, behavior: "smooth" });
