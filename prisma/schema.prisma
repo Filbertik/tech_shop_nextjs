@@ -116,6 +116,10 @@ model Product {
   brand     String
   model     String
 
+  
+  // ✅ ДОДАНО ТУТ
+  description String  // 🔥 NEW (розширений опис 4–7 речень)
+
   price     Int
   oldPrice  Int?
   rating    Int     @default(0)
