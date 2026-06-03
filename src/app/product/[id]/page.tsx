@@ -77,7 +77,8 @@ export default async function Page(props: any) {
 
       {/* <Description title={product.title} /> */}
       <Description description={product.description} />
-      <Reviews />
+      {/* <Reviews /> */}
+      <Reviews productId={product.id} />
 
       <div className="mt-[60px]">
         <RecentViewed />
