@@ -12,6 +12,7 @@ import ImageBlock from "@/components/product/ImageBlock";
 import RelatedProducts from "@/components/product/RelatedProducts";
 import Reviews from "@/components/product/Reviews";
 import TitleBlock from "@/components/product/TitleBlock";
+import RecentViewedTracker from "@/components/RecentViewedTracker";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page(props: any) {
@@ -81,6 +82,15 @@ export default async function Page(props: any) {
       <Reviews productId={product.id} />
 
       <div className="mt-[60px]">
+        {/* <RecentViewed /> */}
+        {/* useRecentViewed(product.id); */}
+        {/* <RecentViewedTracker productId={product.id} /> */}
+        {/* запис в localStorage */}
+        {/* <RecentViewedTracker productId={product.id} /> */}
+
+        {/* показ товарів */}
+        {/* <RecentViewed /> */}
+        <RecentViewedTracker productId={product.id} />
         <RecentViewed />
       </div>
     </div>
