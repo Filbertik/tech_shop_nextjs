@@ -57,25 +57,26 @@ export default function TitleBlock({
         <h1 className="text-[24px] font-semibold text-black">{title}</h1>
 
         {/* availability + code */}
-        <div className="flex gap-4 text-[14px]">
+        {/* <div className="flex gap-4 text-[14px]"> */}
+        <div className="flex gap-[30px] text-[14px]">
           <span className="text-green-600 font-medium flex items-center gap-1">
             <Image
               src="/images/ProductID/check-o.svg"
               alt="in stock"
-              width={14}
-              height={14}
+              width={24}
+              height={24}
             />
-            У наявності
+            В наявності
           </span>
 
           <span className="text-gray-500 flex items-center gap-1">
             <Image
               src="/images/ProductID/bx_check-shield.svg"
               alt="code"
-              width={14}
-              height={14}
+              width={24}
+              height={24}
             />
-            Код: {productCode}
+            Офіційна гарантія. Код товару: {productCode}
           </span>
         </div>
       </div>
