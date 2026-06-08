@@ -33,7 +33,8 @@ export default function Address() {
         <div className="mt-[8px] w-[293px] h-[104px] flex flex-col gap-[4px]">
           <span>Софія Шевченко</span>
           <span>+380 (97) 658 95 59</span>
-          <span>вулиця Левка Лук'яненка, 12, Київ, Україна, 04207</span>
+          <span>вулиця Левка Лук&#39;яненка, 12, Київ, Україна, 04207</span>
+          {/* <span>вулиця Левка Лук'яненка, 12, Київ, Україна, 04207</span> */}
         </div>
       </div>
     </div>
