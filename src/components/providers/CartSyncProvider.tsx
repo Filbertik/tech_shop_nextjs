@@ -8,7 +8,8 @@ export default function CartSyncProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: session, status } = useSession();
+  //   const { data: session, status } = useSession();
+  const { status } = useSession();
 
   // 🔥 викликаємо sync тільки коли сесія завантажена
   useCartSync(status === "authenticated");

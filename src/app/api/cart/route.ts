@@ -1,15 +1,12 @@
 import { NextResponse } from "next/server";
 import prisma from "@/utils/prisma";
-import { getServerSession } from "next-auth";
+import { auth } from "@/auth/auth";
 
 export async function GET() {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session?.user?.email) {
-    return NextResponse.json(
-      user?.cart ?? { items: [] }, // 🔥 ключовий фікс
-    );
-    // return NextResponse.json({ items: [] });
+    return NextResponse.json({ items: [] });
   }
 
   const user = await prisma.user.findUnique({
@@ -27,5 +24,39 @@ export async function GET() {
     },
   });
 
-  return NextResponse.json(user?.cart || { items: [] });
+  return NextResponse.json(user?.cart ?? { items: [] });
 }
+
+// import { NextResponse } from "next/server";
+// import prisma from "@/utils/prisma";
+// // import { getServerSession } from "next-auth";
+// import { auth } from "@/auth/auth";
+
+// export async function GET() {
+//   //   const session = await getServerSession();
+//   const session = await auth();
+
+//   if (!session?.user?.email) {
+//     return NextResponse.json(
+//       user?.cart ?? { items: [] }, // 🔥 ключовий фікс
+//     );
+//     // return NextResponse.json({ items: [] });
+//   }
+
+//   const user = await prisma.user.findUnique({
+//     where: { email: session.user.email },
+//     include: {
+//       cart: {
+//         include: {
+//           items: {
+//             include: {
+//               product: true,
+//             },
+//           },
+//         },
+//       },
+//     },
+//   });
+
+//   return NextResponse.json(user?.cart || { items: [] });
+// }
