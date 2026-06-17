@@ -21,17 +21,26 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     // ✅ ТЕПЕР ДОДАЄМО В КОШИК
     addToCart({
-      id: product.id,
+      id: String(product.id), // 🔥 ФІКС ТУТ
       title: product.title,
       image: product.image,
       price: product.price,
-      oldPrice: product.oldPrice,
-      quantity: 1, // 🔥 важливо
+      oldPrice: product.oldPrice ?? null,
+      quantity: 1,
     });
+    // addToCart({
+    //   // id: product.id,
+    //   id: String(product.id),
+    //   title: product.title,
+    //   image: product.image,
+    //   price: product.price,
+    //   oldPrice: product.oldPrice,
+    //   quantity: 1, // 🔥 важливо
+    // });
 
     openCart(); // 🔥 відкриваємо модалку
 
-    console.log("Додано в кошик:", product.id);
+    // console.log("Додано в кошик:", product.id);
   };
 
   return (
