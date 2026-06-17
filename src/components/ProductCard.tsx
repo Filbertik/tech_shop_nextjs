@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       image: product.image,
       price: product.price,
       oldPrice: product.oldPrice ?? null,
-      quantity: 1,
+      // quantity: 1,
     });
     // addToCart({
     //   // id: product.id,
