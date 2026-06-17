@@ -13,7 +13,10 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   // ✅ ДОДАЛИ
-  const { addToCart, openCart } = useCartStore();
+  // const { addToCart, openCart } = useCartStore();
+  // const addToCart = useCartStore((s) => s.addItem);
+  const addToCart = useCartStore((s) => s.addItem);
+  const openCart = useCartStore((s) => s.openCart); // ✅ ДОДАЛИ
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault(); // ❗ блокує перехід по Link
@@ -26,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       image: product.image,
       price: product.price,
       oldPrice: product.oldPrice ?? null,
-      // quantity: 1,
+      quantity: 1,
     });
     // addToCart({
     //   // id: product.id,

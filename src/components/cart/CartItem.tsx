@@ -5,7 +5,9 @@ import type { CartItemType } from "@/types/cart";
 import { useCartStore } from "@/store/cart.store";
 
 export default function CartItem({ item }: { item: CartItemType }) {
-  const { increase, decrease, remove } = useCartStore();
+  const increase = useCartStore((s) => s.increase);
+  const decrease = useCartStore((s) => s.decrease);
+  const remove = useCartStore((s) => s.remove);
 
   return (
     <div className="flex w-[510px] h-[120px] gap-3">
@@ -36,7 +38,7 @@ export default function CartItem({ item }: { item: CartItemType }) {
         )}
 
         <span className="text-[20px] font-semibold">
-          {item.price * item.quantity} ₴
+          {item.price * (item.quantity ?? 1)} ₴
         </span>
       </div>
 
@@ -48,24 +50,14 @@ export default function CartItem({ item }: { item: CartItemType }) {
 // "use client";
 
 // import Image from "next/image";
+// import type { CartItemType } from "@/types/cart";
 // import { useCartStore } from "@/store/cart.store";
-
-// // ✅ ТИП ЗАМІСТЬ any
-// type CartItemType = {
-//   id: string;
-//   title: string;
-//   image: string;
-//   price: number;
-//   oldPrice?: number;
-//   quantity: number;
-// };
 
 // export default function CartItem({ item }: { item: CartItemType }) {
 //   const { increase, decrease, remove } = useCartStore();
 
 //   return (
 //     <div className="flex w-[510px] h-[120px] gap-3">
-//       {/* IMAGE */}
 //       <div className="w-[120px] h-[120px] relative">
 //         <Image
 //           src={item.image}
@@ -75,45 +67,30 @@ export default function CartItem({ item }: { item: CartItemType }) {
 //         />
 //       </div>
 
-//       {/* INFO */}
 //       <div className="w-[223px] flex flex-col justify-between">
 //         <p className="text-[16px] line-clamp-2">{item.title}</p>
 
-//         {/* COUNTER */}
 //         <div className="flex items-center gap-2">
-//           <button onClick={() => decrease(item.id)}>
-//             <Image src="/images/cat/minus.svg" alt="-" width={16} height={16} />
-//           </button>
-
+//           <button onClick={() => decrease(item.id)}>-</button>
 //           <span>{item.quantity}</span>
-
-//           <button onClick={() => increase(item.id)}>
-//             <Image src="/images/cat/plus.svg" alt="+" width={16} height={16} />
-//           </button>
+//           <button onClick={() => increase(item.id)}>+</button>
 //         </div>
 //       </div>
 
-//       {/* PRICE */}
 //       <div className="flex flex-col justify-start">
 //         {item.oldPrice && (
 //           <span className="text-[12px] line-through text-gray-400">
 //             {item.oldPrice} ₴
 //           </span>
 //         )}
+
 //         <span className="text-[20px] font-semibold">
-//           {item.price * item.quantity} ₴
+//           {/* {item.price * item.quantity} ₴ */}
+//           {item.price * (item.quantity ?? 1)}
 //         </span>
 //       </div>
 
-//       {/* REMOVE */}
-//       <button onClick={() => remove(item.id)}>
-//         <Image
-//           src="/images/cat/close.svg"
-//           alt="remove"
-//           width={16}
-//           height={16}
-//         />
-//       </button>
+//       <button onClick={() => remove(item.id)}>X</button>
 //     </div>
 //   );
 // }
@@ -123,7 +100,17 @@ export default function CartItem({ item }: { item: CartItemType }) {
 // // import Image from "next/image";
 // // import { useCartStore } from "@/store/cart.store";
 
-// // export default function CartItem({ item }: any) {
+// // // ✅ ТИП ЗАМІСТЬ any
+// // type CartItemType = {
+// //   id: string;
+// //   title: string;
+// //   image: string;
+// //   price: number;
+// //   oldPrice?: number;
+// //   quantity: number;
+// // };
+
+// // export default function CartItem({ item }: { item: CartItemType }) {
 // //   const { increase, decrease, remove } = useCartStore();
 
 // //   return (
@@ -180,3 +167,66 @@ export default function CartItem({ item }: { item: CartItemType }) {
 // //     </div>
 // //   );
 // // }
+
+// // // "use client";
+
+// // // import Image from "next/image";
+// // // import { useCartStore } from "@/store/cart.store";
+
+// // // export default function CartItem({ item }: any) {
+// // //   const { increase, decrease, remove } = useCartStore();
+
+// // //   return (
+// // //     <div className="flex w-[510px] h-[120px] gap-3">
+// // //       {/* IMAGE */}
+// // //       <div className="w-[120px] h-[120px] relative">
+// // //         <Image
+// // //           src={item.image}
+// // //           alt={item.title}
+// // //           fill
+// // //           className="object-contain rounded"
+// // //         />
+// // //       </div>
+
+// // //       {/* INFO */}
+// // //       <div className="w-[223px] flex flex-col justify-between">
+// // //         <p className="text-[16px] line-clamp-2">{item.title}</p>
+
+// // //         {/* COUNTER */}
+// // //         <div className="flex items-center gap-2">
+// // //           <button onClick={() => decrease(item.id)}>
+// // //             <Image src="/images/cat/minus.svg" alt="-" width={16} height={16} />
+// // //           </button>
+
+// // //           <span>{item.quantity}</span>
+
+// // //           <button onClick={() => increase(item.id)}>
+// // //             <Image src="/images/cat/plus.svg" alt="+" width={16} height={16} />
+// // //           </button>
+// // //         </div>
+// // //       </div>
+
+// // //       {/* PRICE */}
+// // //       <div className="flex flex-col justify-start">
+// // //         {item.oldPrice && (
+// // //           <span className="text-[12px] line-through text-gray-400">
+// // //             {item.oldPrice} ₴
+// // //           </span>
+// // //         )}
+// // //         <span className="text-[20px] font-semibold">
+// // //           {item.price * item.quantity} ₴
+// // //         </span>
+// // //       </div>
+
+// // //       {/* REMOVE */}
+// // //       <button onClick={() => remove(item.id)}>
+// // //         <Image
+// // //           src="/images/cat/close.svg"
+// // //           alt="remove"
+// // //           width={16}
+// // //           height={16}
+// // //         />
+// // //       </button>
+// // //     </div>
+// // //   );
+// // // }
