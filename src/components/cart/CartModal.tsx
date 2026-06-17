@@ -5,7 +5,8 @@ import CartItem from "./CartItem";
 import Image from "next/image";
 
 export default function CartModal() {
-  const { isOpen, closeCart, items, getTotal } = useCartStore();
+  const { isOpen, closeCart, items } = useCartStore();
+  // const { isOpen, closeCart, items, getTotal } = useCartStore();
 
   if (!isOpen) return null;
 
@@ -34,7 +35,10 @@ export default function CartModal() {
         {/* TOTAL */}
         <div className="mt-[72px] flex justify-between w-[510px] text-[24px] font-semibold">
           <span>Разом:</span>
-          <span>{getTotal()} ₴</span>
+          <span>
+            {items.reduce((sum, item) => sum + item.price * item.quantity, 0)} ₴
+          </span>
+          {/* <span>{getTotal()} ₴</span> */}
         </div>
 
         {/* BUTTONS */}
