@@ -72,7 +72,11 @@ hover:bg-gray-100 transition duration-200 active:scale-95"
 
         {/* BUTTONS */}
         <div className="mt-[36px] w-[510px] flex flex-col gap-5">
-          <button className="h-[50px] bg-[#355EC0] text-white rounded">
+          {/* <button className="h-[50px] bg-[#355EC0] text-white rounded"> */}
+          <button
+            className="h-[50px] bg-[#355EC0] text-white rounded 
+hover:bg-[#2f52a8] transition duration-200 active:scale-95"
+          >
             Оформити замовлення
           </button>
 
