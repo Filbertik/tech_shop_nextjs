@@ -90,6 +90,7 @@ hover:bg-[#2f32a8] transition duration-250 active:scale-95"
 
           {/* <button className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded"> */}
           <button
+            onClick={goToCheckout}
             className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
 hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95"
           >
