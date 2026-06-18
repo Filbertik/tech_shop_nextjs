@@ -75,12 +75,16 @@ hover:bg-gray-100 transition duration-200 active:scale-95"
           {/* <button className="h-[50px] bg-[#355EC0] text-white rounded"> */}
           <button
             className="h-[50px] bg-[#355EC0] text-white rounded 
-hover:bg-[#2f52a8] transition duration-200 active:scale-95"
+hover:bg-[#2f32a8] transition duration-250 active:scale-95"
           >
             Оформити замовлення
           </button>
 
-          <button className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded">
+          {/* <button className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded"> */}
+          <button
+            className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
+hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95"
+          >
             Купити у розсрочку
           </button>
         </div>
