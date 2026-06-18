@@ -4,11 +4,18 @@ import { useEffect } from "react";
 import { useCartStore } from "@/store/cart.store";
 import CartItem from "./CartItem";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function CartModal() {
   const isOpen = useCartStore((s) => s.isOpen);
   const closeCart = useCartStore((s) => s.closeCart);
   const items = useCartStore((s) => s.items ?? []);
+  const router = useRouter();
+
+  const goToCheckout = () => {
+    closeCart(); // 🔥 закриваємо модалку
+    router.push("/checkout");
+  };
 
   // 🔥 ESC закриття
   useEffect(() => {
@@ -74,6 +81,7 @@ hover:bg-gray-100 transition duration-200 active:scale-95"
         <div className="mt-[36px] w-[510px] flex flex-col gap-5">
           {/* <button className="h-[50px] bg-[#355EC0] text-white rounded"> */}
           <button
+            onClick={goToCheckout}
             className="h-[50px] bg-[#355EC0] text-white rounded 
 hover:bg-[#2f32a8] transition duration-250 active:scale-95"
           >
