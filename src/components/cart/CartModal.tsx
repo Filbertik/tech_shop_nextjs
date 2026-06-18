@@ -49,7 +49,9 @@ export default function CartModal() {
 
           <button
             onClick={closeCart}
-            className="w-[50px] h-[50px] flex items-center justify-center shadow"
+            // className="w-[50px] h-[50px] flex items-center justify-center shadow"
+            className="w-[50px] h-[50px] flex items-center justify-center shadow rounded 
+hover:bg-gray-100 transition duration-200 active:scale-95"
           >
             <Image src="/images/cat/x.svg" alt="close" width={20} height={20} />
           </button>
