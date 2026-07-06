@@ -9,7 +9,7 @@ export default function ContactInfo() {
 
         {/* BLOCK */}
         <div className="w-[595px]">
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-col gap-[24px]">
             <Input name="firstName" placeholder="Ім’я" />
             <Input name="lastName" placeholder="Прізвище" />
             <Input name="phone" placeholder="Номер телефону" />
