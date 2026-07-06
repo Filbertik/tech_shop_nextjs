@@ -4,7 +4,7 @@ export default function ContactInfo() {
   return (
     <div className="w-full h-[395px] rounded-[4px] p-[40px_24px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white">
       {/* ГОЛОВНИЙ КОНТЕЙНЕР З ВІДСТУПАМИ */}
-      <div className="flex flex-col gap-[12px]">
+      <div className="flex flex-col gap-[14px]">
         <h2 className="text-[18px] font-semibold">Контактна інформація</h2>
 
         {/* BLOCK */}
