@@ -5,7 +5,7 @@ export default function DeliveryAddress() {
     <div className="w-full h-[324px] rounded-[4px] p-[40px_24px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white">
       {/* 👉 ГОЛОВНИЙ КОНТЕЙНЕР */}
       <div className="flex flex-col gap-[40px]">
-        <h2 className="text-[18px] font-semibold">Адрес доставки</h2>
+        <h2 className="text-[18px] font-semibold">Адреса доставки</h2>
 
         {/* 👉 ФОРМА */}
         <div className="flex flex-col gap-[16px] w-[595px]">
