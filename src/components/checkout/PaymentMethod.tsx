@@ -127,6 +127,7 @@ export default function PaymentMethod() {
               <div className="flex flex-col gap-2 w-[289px]">
                 <label className="text-sm">CVC</label>
                 <input
+                  type="password"
                   value={cvc}
                   onChange={(e) =>
                     setCvc(e.target.value.replace(/\D/g, "").slice(0, 3))
