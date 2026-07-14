@@ -134,6 +134,7 @@ export default function PaymentMethod() {
                   }
                   onBlur={validate}
                   placeholder="CVC"
+                  maxLength={3}
                   className="border border-gray-300 rounded-[10px] px-[10px] py-[12px] h-[50px]"
                 />
                 {errors.cvc && (
