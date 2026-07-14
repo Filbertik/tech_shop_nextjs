@@ -17,7 +17,7 @@ export default function DeliveryAddress() {
 
           {/* 👉 РЯД З 3 ІНПУТАМИ */}
           <div className="flex gap-[16px]">
-            <Input placeholder="Дім" className="flex-1" />
+            <Input placeholder="Дім-" className="flex-1" />
 
             <Input placeholder="Квартира" className="flex-1" />
 
