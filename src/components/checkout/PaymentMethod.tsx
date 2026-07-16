@@ -117,6 +117,25 @@ export default function PaymentMethod() {
 
               {/* 💳 SVG іконки */}
               {cardType === "visa" && (
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                  alt="visa"
+                  width={32}
+                  height={20}
+                  className="absolute right-3 top-[38px] object-contain"
+                />
+              )}
+
+              {cardType === "mastercard" && (
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                  alt="mastercard"
+                  width={32}
+                  height={20}
+                  className="absolute right-3 top-[38px] object-contain"
+                />
+              )}
+              {/* {cardType === "visa" && (
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   className="absolute right-3 top-[38px] w-8 h-5 object-contain"
@@ -130,7 +149,7 @@ export default function PaymentMethod() {
                   className="absolute right-3 top-[38px] w-8 h-5 object-contain"
                   alt="mastercard"
                 />
-              )}
+              )} */}
 
               {errors.cardNumber && (
                 <span className="text-red-500 text-sm">
