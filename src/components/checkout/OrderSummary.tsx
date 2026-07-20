@@ -1,7 +1,7 @@
 "use client";
 
-import { useCartStore } from "@/store/cart.store"; // перевір шлях!
-import CartItem from "@/components/cart/CartItem"; // перевір шлях!
+import { useCartStore } from "@/store/cart.store";
+import CartItem from "@/components/cart/CartItem";
 
 export default function OrderSummary() {
   const { items } = useCartStore();
