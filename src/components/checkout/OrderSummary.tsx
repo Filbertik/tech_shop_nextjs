@@ -4,7 +4,11 @@ import { useCartStore } from "@/store/cart.store"; // перевір шлях!
 import CartItem from "@/components/cart/CartItem"; // перевір шлях!
 
 export default function OrderSummary() {
-  const { items, total } = useCartStore();
+  const { items } = useCartStore();
+
+  const total = items.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
 
   return (
     <div className="w-full min-h-[433px] rounded-[4px] p-[24px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white">
