@@ -45,6 +45,20 @@ export default function OrderSummary() {
           Купити у розсрочку
         </button>
       </div>
+      {/* AGREEMENT */}
+      <div className="mt-6 w-full max-w-[526px] flex items-start gap-2">
+        <input
+          type="checkbox"
+          className="mt-[3px] w-[16px] h-[16px] accent-[#355EC0] cursor-pointer"
+        />
+
+        <p className="text-[16px] leading-[150%] text-black">
+          Підтверджуючи замовлення, я приймаю умови{" "}
+          <span className="text-[#355EC0] cursor-pointer">
+            публічної оферти
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

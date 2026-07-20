@@ -38,7 +38,7 @@ export default function Page() {
         </div>
 
         {/* RIGHT BLOCK */}
-        <div className="w-[526px]">
+        <div className="w-[566px]">
           <OrderSummary />
         </div>
       </div>
