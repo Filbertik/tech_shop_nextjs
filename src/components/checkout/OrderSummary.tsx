@@ -33,6 +33,13 @@ export default function OrderSummary() {
         >
           Оформити замовлення
         </button>
+
+        <button
+          className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
+          hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95"
+        >
+          Купити у розсрочку
+        </button>
       </div>
     </div>
   );
