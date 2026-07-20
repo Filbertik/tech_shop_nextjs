@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/store/cart.store";
 import CartItem from "@/components/cart/CartItem";
+import { useState } from "react";
 
 export default function OrderSummary() {
   const { items } = useCartStore();
@@ -9,6 +10,8 @@ export default function OrderSummary() {
   const total = items.reduce((sum, item) => {
     return sum + item.price * item.quantity;
   }, 0);
+
+  const [accepted, setAccepted] = useState(false);
 
   return (
     <div className="w-full min-h-[433px] rounded-[4px] p-[24px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white">
@@ -32,25 +35,48 @@ export default function OrderSummary() {
       {/* BUTTONS */}
       <div className="mt-6 flex flex-col gap-4">
         <button
+          disabled={!accepted}
+          className="h-[50px] bg-[#355EC0] text-white rounded 
+  hover:bg-[#2f32a8] transition duration-200 active:scale-95
+  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#355EC0]"
+        >
+          Оформити замовлення
+        </button>
+        {/* <button
           className="h-[50px] bg-[#355EC0] text-white rounded 
           hover:bg-[#2f32a8] transition duration-200 active:scale-95"
         >
           Оформити замовлення
-        </button>
+        </button> */}
 
         <button
+          disabled={!accepted}
+          className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
+  hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95
+  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#355EC0]"
+        >
+          Купити у розсрочку
+        </button>
+
+        {/* <button
           className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
           hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95"
         >
           Купити у розсрочку
-        </button>
+        </button> */}
       </div>
       {/* AGREEMENT */}
       <div className="mt-6 w-full max-w-[526px] flex items-start gap-2">
         <input
           type="checkbox"
+          checked={accepted}
+          onChange={(e) => setAccepted(e.target.checked)}
           className="mt-[3px] w-[16px] h-[16px] accent-[#355EC0] cursor-pointer"
         />
+        {/* <input
+          type="checkbox"
+          className="mt-[3px] w-[16px] h-[16px] accent-[#355EC0] cursor-pointer"
+        /> */}
 
         <p className="text-[16px] leading-[150%] text-black">
           Підтверджуючи замовлення, я приймаю умови{" "}
