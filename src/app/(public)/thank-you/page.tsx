@@ -1,9 +1,16 @@
 "use client";
 
+import { useCartStore } from "@/store/cart.store";
 import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const { orderData, clearCart } = useCartStore();
   const router = useRouter();
+  // const router = useRouter();
+  if (!orderData) {
+    return <div className="p-10">Немає даних замовлення</div>;
+  }
 
   return (
     <div className="flex justify-center py-[90px] bg-[#f5f7fb]">
@@ -32,16 +39,24 @@ export default function Page() {
           </div>
 
           <div className="flex flex-col gap-[12px] text-black font-bold text-[16px]">
-            <span>#0123_45678</span>
+            <span>{orderData.orderNumber}</span>
+            <span>{orderData.date}</span>
+            <span>{orderData.total} ₴</span>
+            <span>{orderData.paymentMethod}</span>
+            {/* <span>#0123_45678</span>
             <span>13 грудня, 2025</span>
             <span>25 999 ₴</span>
-            <span>Оплата картою</span>
+            <span>Оплата картою</span> */}
           </div>
         </div>
 
         {/* BUTTON */}
         <button
-          onClick={() => router.push("/")}
+          // onClick={() => router.push("/")}
+          onClick={() => {
+            clearCart();
+            router.push("/");
+          }}
           className="w-[277px] h-[50px] bg-[#355EC0] text-white rounded-[4px]
           px-[32px] py-[12px]
           hover:bg-[#2f32a8] transition duration-200 active:scale-95"

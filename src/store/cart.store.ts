@@ -4,24 +4,72 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { CartItemType } from "@/types/cart";
 
+// type CartState = {
+//   items: CartItemType[];
+//   isOpen: boolean;
+
+//   addItem: (item: CartItemType) => void;
+//   remove: (id: string) => void;
+//   increase: (id: string) => void;
+//   decrease: (id: string) => void;
+//   clear: () => void;
+//   openCart: () => void;
+//   closeCart: () => void;
+// };
+type OrderData = {
+  orderNumber: string;
+  date: string;
+  total: number;
+  paymentMethod: string;
+};
+
 type CartState = {
   items: CartItemType[];
   isOpen: boolean;
+  orderData: OrderData | null;
 
   addItem: (item: CartItemType) => void;
   remove: (id: string) => void;
   increase: (id: string) => void;
   decrease: (id: string) => void;
+
   clear: () => void;
+  clearCart: () => void;
+
   openCart: () => void;
   closeCart: () => void;
+
+  setOrderData: (data: OrderData) => void;
 };
+// type CartState = {
+//   items: CartItemType[];
+//   isOpen: boolean;
+//   orderData: OrderData | null;
+
+//   addItem: (item: CartItemType) => void;
+//   remove: (id: string) => void;
+//   increase: (id: string) => void;
+//   decrease: (id: string) => void;
+//   clear: () => void;
+//   openCart: () => void;
+//   closeCart: () => void;
+
+//   setOrderData: (data: OrderData) => void;
+// };
+// type OrderData = {
+//   orderNumber: string;
+//   date: string;
+//   total: number;
+//   paymentMethod: string;
+// };
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
       isOpen: false,
+      orderData: null,
+      clearCart: () => set({ items: [], orderData: null }),
 
       addItem: (item) => {
         const quantity = item.quantity ?? 1;
@@ -67,10 +115,12 @@ export const useCartStore = create<CartState>()(
         });
       },
 
-      clear: () => set({ items: [] }),
+      // clear: () => set({ items: [] }),
+      clear: () => set({ items: [], orderData: null }),
 
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
+      setOrderData: (data) => set({ orderData: data }),
     }),
     {
       name: "cart-storage", // 🔥 ключ в localStorage
