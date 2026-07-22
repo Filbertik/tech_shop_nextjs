@@ -54,6 +54,7 @@ export default function OrderSummary() {
 
         <button
           disabled={!accepted}
+          onClick={() => router.push("/thank-you")}
           className="h-[50px] border border-[#355EC0] text-[#355EC0] rounded 
   hover:bg-[#355EC0] hover:text-white transition duration-200 active:scale-95
   disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#355EC0]"
