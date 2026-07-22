@@ -3,6 +3,7 @@
 import { useCartStore } from "@/store/cart.store";
 import CartItem from "@/components/cart/CartItem";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function OrderSummary() {
   const { items } = useCartStore();
@@ -12,6 +13,7 @@ export default function OrderSummary() {
   }, 0);
 
   const [accepted, setAccepted] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="w-full min-h-[433px] rounded-[4px] p-[24px] shadow-[0_9px_22px_rgba(21,53,90,0.1)] bg-white">
@@ -36,6 +38,7 @@ export default function OrderSummary() {
       <div className="mt-6 flex flex-col gap-4">
         <button
           disabled={!accepted}
+          onClick={() => router.push("/thank-you")}
           className="h-[50px] bg-[#355EC0] text-white rounded 
   hover:bg-[#2f32a8] transition duration-200 active:scale-95
   disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#355EC0]"
