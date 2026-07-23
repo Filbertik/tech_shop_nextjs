@@ -11,8 +11,8 @@ export default function NotFoundPage() {
       <Image
         src="/images/404/Group_l.png"
         alt="left decor"
-        width={300}
-        height={300}
+        width={436}
+        height={422}
         className="absolute bottom-0 left-0 pointer-events-none"
       />
 
