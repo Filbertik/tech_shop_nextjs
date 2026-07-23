@@ -9,7 +9,7 @@ const NotFoundPage = () => {
       <div className="text-8xl font-bold text-gray-300">404</div>
 
       <h1 className="text-3xl font-bold tracking-tight">
-        Сторінку не знайдено
+        Сторінки більше немає
       </h1>
 
       <div className="pt-6">
