@@ -8,6 +8,7 @@ interface IProps {
   onClose: () => void;
   title: string;
   children: ReactNode;
+  className?: string;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
@@ -16,7 +17,7 @@ const CustomModal = ({
   onClose,
   title,
   children,
-  size = "xs"
+  size = "xs",
 }: IProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={size}>
