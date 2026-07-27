@@ -17,7 +17,7 @@ const CustomModal = ({
   onClose,
   title,
   children,
-  size = "xs",
+  size = "lg",
 }: IProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={size}>
