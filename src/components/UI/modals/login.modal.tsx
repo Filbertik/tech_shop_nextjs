@@ -15,7 +15,14 @@ const LoginModal = ({ isOpen, onClose, openRegister }: IProps) => {
       isOpen={isOpen}
       onClose={onClose}
       title="Авторизація"
-      className="bg-[#F5F5F7] rounded-[4px] w-[530px] h-[575px] px-[90px] py-[80px]"
+      className="
+  w-full 
+  max-w-[530px] 
+  px-[24px] md:px-[90px] 
+  py-[40px] md:py-[80px]
+"
+      // className="w-[530px] px-[90px] py-[80px]"
+      // className="bg-[#F5F5F7] rounded-[4px] w-[530px] h-[575px] px-[90px] py-[80px]"
     >
       {/* 🔁 Перемикач */}
       <div className="flex justify-center mb-6">
