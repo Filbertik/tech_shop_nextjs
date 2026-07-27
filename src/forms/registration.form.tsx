@@ -29,6 +29,28 @@ const RegistrationForm = ({ onClose }: IProps) => {
 
   return (
     <Form className="w-full" onSubmit={handleSubmit}>
+      <div className="space-y-4">
+        {/* Ім'я */}
+        <input
+          type="text"
+          placeholder="Ім'я"
+          className="w-full h-[48px] px-4 rounded-[8px] border border-[var(--border-light)] outline-none focus:border-[#83A0F9]"
+        />
+
+        {/* Прізвище */}
+        <input
+          type="text"
+          placeholder="Прізвище"
+          className="w-full h-[48px] px-4 rounded-[8px] border border-[var(--border-light)] outline-none focus:border-[#83A0F9]"
+        />
+
+        {/* Телефон */}
+        <input
+          type="tel"
+          placeholder="Телефон +380 (__) ___ __ __"
+          className="w-full h-[48px] px-4 rounded-[8px] border border-[var(--border-light)] outline-none focus:border-[#83A0F9]"
+        />
+      </div>
       <Input
         aria-label="Email"
         isRequired

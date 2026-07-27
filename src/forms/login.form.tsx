@@ -31,7 +31,7 @@ const LoginForm = ({ onClose }: IProps) => {
         aria-label="Email"
         isRequired
         name="email"
-        placeholder="Введите email"
+        placeholder="Введіть email"
         type="email"
         value={formData.email}
         classNames={{
@@ -40,14 +40,14 @@ const LoginForm = ({ onClose }: IProps) => {
         }}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         validate={(value) => {
-          if (!value) return "Почта обязательна";
+          if (!value) return "Пошта обов'язкова";
           return null;
         }}
       />
       <Input
         isRequired
         name="password"
-        placeholder="Введите пароль"
+        placeholder="Введіть пароль"
         type="password"
         value={formData.password}
         classNames={{
@@ -56,7 +56,7 @@ const LoginForm = ({ onClose }: IProps) => {
         }}
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         validate={(value) => {
-          if (!value) return "Пароль обязателен";
+          if (!value) return "Пароль обов'язковий !";
           return null;
         }}
       />
