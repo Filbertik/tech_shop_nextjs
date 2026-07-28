@@ -65,7 +65,7 @@ const RegistrationForm = ({ onClose }: IProps) => {
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         validate={(value) => {
           if (!value) return "Пошта обов'язкова";
-          if (!validateEmail(value)) return "Некоректний email";
+          if (!validateEmail(value)) return "Некоректний поштовий адрес email";
           return null;
         }}
       />
